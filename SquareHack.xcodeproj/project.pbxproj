@@ -38,6 +38,7 @@
 		80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796D32A1CC1A600353DDD /* SignUpViewController.swift */; };
 		80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796D52A1CC1B100353DDD /* LoginViewController.swift */; };
 		80E796D82A1CC9FF00353DDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80E796D72A1CC9FE00353DDD /* GoogleService-Info.plist */; };
+		DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3900C2A1D164B00ECF68F /* TopBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		80E796D32A1CC1A600353DDD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		80E796D52A1CC1B100353DDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80E796D72A1CC9FE00353DDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DAD3900C2A1D164B00ECF68F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				80E796932A1B6ADC00353DDD /* HomeViewController.swift */,
 				806956B52A1CE72F00B45956 /* HomeViewModel.swift */,
 				806956B92A1CE86C00B45956 /* UserModel.swift */,
+				DAD3900C2A1D164B00ECF68F /* TopBarView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				80E796C42A1BF7E800353DDD /* ScanToPayViewController.swift in Sources */,
 				80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */,
 				806956B42A1CD01500B45956 /* SignUpViewModel.swift in Sources */,
+				DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */,
 				806956B22A1CCF4D00B45956 /* AuthCoordinator.swift in Sources */,
 				80E796972A1B6AFF00353DDD /* TerminalAPICoordinator.swift in Sources */,
 				80E796C72A1BF84800353DDD /* TabBarController.swift in Sources */,
