@@ -25,7 +25,7 @@ class HomeViewModel: HomeViewModelProtocol {
         pointsListener = userDocumentRef?.addSnapshotListener({ snapshot, error in
             if let error = error {
                 print(error)
-                completion(0)
+                return
             }
             if let data = snapshot?.data() {
                 do {
@@ -33,7 +33,7 @@ class HomeViewModel: HomeViewModelProtocol {
                     completion(user.points)
                 }
                 catch {
-                    completion(0)
+                    print(error)
                 }
             }
         })
