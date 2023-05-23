@@ -23,12 +23,21 @@ class HomeViewController: UIViewController {
         checkLoggedIn()
         setupNavBar()
         view.backgroundColor = .white
-        // To get points balance -
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel?.getUserPointsBalance(completion: { points in
             print(points) //<--- this variable points holds their points
         // eg you could do -> pointsLabel.text = "\(points)"
         })
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel?.pointsListener?.remove()
+    }
+    
     
     func setupNavBar() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "x.square.fill")?.withTintColor(.black).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(logOut))

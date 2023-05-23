@@ -22,7 +22,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let walletselected = UIImage(systemName: "wallet.pass.fill")
         wallet.tabBarItem = UITabBarItem(title: "Wallet", image: walletImage, selectedImage: walletselected)
         
-        let scanToPay = ScanToPayViewController()
+        let scanToPay = OrderDetailsViewController()
         let scanToPayimage = UIImage(systemName: "qrcode")
         let scanToPayselected = UIImage(systemName: "qrcode")
         scanToPay.tabBarItem = UITabBarItem(title: "Pay", image: scanToPayimage, selectedImage: scanToPayselected)
