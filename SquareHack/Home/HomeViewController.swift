@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
         
         topBarView.anchor(top: view.topAnchor, paddingTop: 70, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 24, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
 
-        countView.anchor(top: topBarView.bottomAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
+        countView.anchor(top: topBarView.bottomAnchor, paddingTop: 32, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
         
         logOutButton.anchor(top: topBarView.topAnchor, paddingTop: 300, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 35, height: 35)
         logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

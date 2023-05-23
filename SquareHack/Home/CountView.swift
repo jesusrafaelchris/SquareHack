@@ -47,7 +47,7 @@ class CountView: UIView {
         addSubview(availablePoints)
         addSubview(tierLabel)
         
-        rewardLabel.anchor(top: topAnchor, paddingTop: 32, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 24, right: nil, paddingRight: 0, width: 0, height: 0)
+        rewardLabel.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 24, right: nil, paddingRight: 0, width: 0, height: 0)
             
         rewardPoints.anchor(top: rewardLabel.bottomAnchor, paddingTop: 1, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 24, right: nil, paddingRight: 0, width: 0, height: 0)
         
