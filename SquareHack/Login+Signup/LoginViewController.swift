@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
     lazy var submitButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
-        button.setTitle("Signup", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(login), for: .touchUpInside)
         button.layer.cornerRadius = 8
