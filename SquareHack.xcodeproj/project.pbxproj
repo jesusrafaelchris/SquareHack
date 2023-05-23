@@ -45,6 +45,7 @@
 		80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796D52A1CC1B100353DDD /* LoginViewController.swift */; };
 		80E796D82A1CC9FF00353DDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80E796D72A1CC9FE00353DDD /* GoogleService-Info.plist */; };
 		DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3900C2A1D164B00ECF68F /* TopBarView.swift */; };
+		DAD3900F2A1D341100ECF68F /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3900E2A1D341100ECF68F /* CountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		80E796D52A1CC1B100353DDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80E796D72A1CC9FE00353DDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DAD3900C2A1D164B00ECF68F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		DAD3900E2A1D341100ECF68F /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				806956B52A1CE72F00B45956 /* HomeViewModel.swift */,
 				806956B92A1CE86C00B45956 /* UserModel.swift */,
 				DAD3900C2A1D164B00ECF68F /* TopBarView.swift */,
+				DAD3900E2A1D341100ECF68F /* CountView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				806956BF2A1CFDD000B45956 /* OrderDetailHeaderView.swift in Sources */,
 				806956B02A1CCF2100B45956 /* SignUpError.swift in Sources */,
 				80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */,
+				DAD3900F2A1D341100ECF68F /* CountView.swift in Sources */,
 				80E796942A1B6ADC00353DDD /* HomeViewController.swift in Sources */,
 				80E796CA2A1BF8DE00353DDD /* WalletViewController.swift in Sources */,
 				806956C22A1CFE2700B45956 /* OrderHeaderModel.swift in Sources */,
