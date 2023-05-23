@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
         checkLoggedIn()
         setUpView()
         view.backgroundColor = .white
-        
+      
         viewModel?.getUserPointsBalance(completion: { points in
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = .decimal
@@ -84,10 +84,20 @@ class HomeViewController: UIViewController {
             } else {
                 self.tierLabel.text = "Gold Tier"
             }
-            
+                                                     
         })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.getUserPointsBalance(completion: { points in
+            print(points)
+    }
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+
     func setUpView() {
         view.addSubview(topBarView)
         view.addSubview(logOutButton)
@@ -110,6 +120,12 @@ class HomeViewController: UIViewController {
         logOutButton.anchor(top: topBarView.topAnchor, paddingTop: 300, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 35, height: 35)
         logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel?.pointsListener?.remove()
+    }
+    
     
     @objc func logOut() {
         do {

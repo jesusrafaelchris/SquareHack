@@ -19,6 +19,12 @@
 		806956B62A1CE72F00B45956 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956B52A1CE72F00B45956 /* HomeViewModel.swift */; };
 		806956B82A1CE84800B45956 /* JSONDecoder+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956B72A1CE84800B45956 /* JSONDecoder+Ext.swift */; };
 		806956BA2A1CE86C00B45956 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956B92A1CE86C00B45956 /* UserModel.swift */; };
+		806956BC2A1CFCF300B45956 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956BB2A1CFCF300B45956 /* OrderDetailsViewController.swift */; };
+		806956BF2A1CFDD000B45956 /* OrderDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956BE2A1CFDD000B45956 /* OrderDetailHeaderView.swift */; };
+		806956C22A1CFE2700B45956 /* OrderHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C12A1CFE2700B45956 /* OrderHeaderModel.swift */; };
+		806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C32A1D087100B45956 /* OrderItemCell.swift */; };
+		806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C52A1D0E0800B45956 /* OrderItemModel.swift */; };
+		806956C92A1D0F9100B45956 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 806956C82A1D0F9100B45956 /* SDWebImage */; };
 		80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967D2A1B6A4100353DDD /* AppDelegate.swift */; };
 		80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */; };
 		80E796822A1B6A4100353DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796812A1B6A4100353DDD /* ViewController.swift */; };
@@ -48,6 +54,11 @@
 		806956B52A1CE72F00B45956 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		806956B72A1CE84800B45956 /* JSONDecoder+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Ext.swift"; sourceTree = "<group>"; };
 		806956B92A1CE86C00B45956 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		806956BB2A1CFCF300B45956 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
+		806956BE2A1CFDD000B45956 /* OrderDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailHeaderView.swift; sourceTree = "<group>"; };
+		806956C12A1CFE2700B45956 /* OrderHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderModel.swift; sourceTree = "<group>"; };
+		806956C32A1D087100B45956 /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
+		806956C52A1D0E0800B45956 /* OrderItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemModel.swift; sourceTree = "<group>"; };
 		80E7967A2A1B6A4100353DDD /* SquareHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E7967D2A1B6A4100353DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +91,7 @@
 				806956A42A1CCB6E00B45956 /* FirebaseAnalytics in Frameworks */,
 				806956AA2A1CCB6E00B45956 /* FirebaseFirestore in Frameworks */,
 				806956AC2A1CCB6E00B45956 /* FirebaseFunctions in Frameworks */,
+				806956C92A1D0F9100B45956 /* SDWebImage in Frameworks */,
 				806956A82A1CCB6E00B45956 /* FirebaseAuth in Frameworks */,
 				806956A62A1CCB6E00B45956 /* FirebaseAppDistribution-Beta in Frameworks */,
 				806956AE2A1CCB6E00B45956 /* FirebaseStorage in Frameworks */,
@@ -89,6 +101,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		806956BD2A1CFDC000B45956 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				806956BE2A1CFDD000B45956 /* OrderDetailHeaderView.swift */,
+				806956C32A1D087100B45956 /* OrderItemCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		806956C02A1CFE1D00B45956 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				806956C12A1CFE2700B45956 /* OrderHeaderModel.swift */,
+				806956C52A1D0E0800B45956 /* OrderItemModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		80E796712A1B6A4100353DDD = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				80E796C32A1BF7E800353DDD /* ScanToPayViewController.swift */,
+				806956BB2A1CFCF300B45956 /* OrderDetailsViewController.swift */,
+				806956C02A1CFE1D00B45956 /* Model */,
+				806956BD2A1CFDC000B45956 /* Views */,
 			);
 			path = ScanToPay;
 			sourceTree = "<group>";
@@ -226,6 +259,7 @@
 				806956A92A1CCB6E00B45956 /* FirebaseFirestore */,
 				806956AB2A1CCB6E00B45956 /* FirebaseFunctions */,
 				806956AD2A1CCB6E00B45956 /* FirebaseStorage */,
+				806956C82A1D0F9100B45956 /* SDWebImage */,
 			);
 			productName = SquareHack;
 			productReference = 80E7967A2A1B6A4100353DDD /* SquareHack.app */;
@@ -257,6 +291,7 @@
 			mainGroup = 80E796712A1B6A4100353DDD;
 			packageReferences = (
 				806956A22A1CCB6E00B45956 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				806956C72A1D0F9100B45956 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 80E7967B2A1B6A4100353DDD /* Products */;
 			projectDirPath = "";
@@ -292,6 +327,7 @@
 				80E7969D2A1B842100353DDD /* TestViewController.swift in Sources */,
 				80E796CD2A1CB7C400353DDD /* ChooseSorLViewController.swift in Sources */,
 				80E796C42A1BF7E800353DDD /* ScanToPayViewController.swift in Sources */,
+				806956BC2A1CFCF300B45956 /* OrderDetailsViewController.swift in Sources */,
 				80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */,
 				806956B42A1CD01500B45956 /* SignUpViewModel.swift in Sources */,
 				DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */,
@@ -304,10 +340,14 @@
 				80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */,
 				80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */,
 				80E796D02A1CB90B00353DDD /* UIView+Ext.swift in Sources */,
+				806956BF2A1CFDD000B45956 /* OrderDetailHeaderView.swift in Sources */,
 				806956B02A1CCF2100B45956 /* SignUpError.swift in Sources */,
 				80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */,
 				80E796942A1B6ADC00353DDD /* HomeViewController.swift in Sources */,
 				80E796CA2A1BF8DE00353DDD /* WalletViewController.swift in Sources */,
+				806956C22A1CFE2700B45956 /* OrderHeaderModel.swift in Sources */,
+				806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */,
+				806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +575,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		806956C72A1D0F9100B45956 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -567,6 +615,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 806956A22A1CCB6E00B45956 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		806956C82A1D0F9100B45956 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 806956C72A1D0F9100B45956 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
