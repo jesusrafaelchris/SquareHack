@@ -90,14 +90,8 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel?.getUserPointsBalance(completion: { points in
-            print(points)
     }
   
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    
-
     func setUpView() {
         view.addSubview(topBarView)
         view.addSubview(logOutButton)
