@@ -32,6 +32,7 @@ class SignUpViewModel: SignUpViewModelProtocol {
                         return
                     }
                     completion(nil)
+                    // Comment
                 }
             }
         })
