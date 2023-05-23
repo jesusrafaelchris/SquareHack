@@ -12,10 +12,6 @@ class HomeViewController: UIViewController {
         checkLoggedIn()
         setupNavBar()
         view.backgroundColor = .white
-        //monkey
-        //bananna
-        
-        
     }
     
     func setupNavBar() {
