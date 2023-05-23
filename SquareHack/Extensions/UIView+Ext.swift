@@ -56,7 +56,6 @@ extension UIView {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
-    //jeevan test
 }
 
 var vSpinner : UIView?
