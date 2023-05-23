@@ -6,6 +6,7 @@ class HomeViewController: UIViewController {
     var uid: String {
         return Auth.auth().currentUser?.uid ?? ""
     }
+    // test
 
     override func viewDidLoad() {
         super.viewDidLoad()
