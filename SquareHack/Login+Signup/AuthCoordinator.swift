@@ -23,7 +23,7 @@ class AuthCoordinator: AuthCoordinatorProtocol {
     
     func createUserDocument(uid: String, name: String, completion: @escaping CreateUserDocumentResult) {
         let ref = Firestore.firestore().collection("users").document(uid)
-        ref.setData(["name": name, "uid": uid], merge: true) { error in
+        ref.setData(["name": name, "uid": uid, "points": 0], merge: true) { error in
                 if error != nil { completion(error) }
                 completion(nil)
         }

@@ -3,16 +3,31 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
+    var viewModel: HomeViewModelProtocol?
+    
     var uid: String {
         return Auth.auth().currentUser?.uid ?? ""
     }
-    // test
-
+    
+    init(viewModel: HomeViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLoggedIn()
         setupNavBar()
         view.backgroundColor = .white
+        // To get points balance -
+        viewModel?.getUserPointsBalance(completion: { points in
+            print(points) //<--- this variable points holds their points
+        // eg you could do -> pointsLabel.text = "\(points)"
+        })
     }
     
     func setupNavBar() {

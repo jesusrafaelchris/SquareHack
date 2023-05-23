@@ -12,7 +12,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         
-        let home = HomeViewController()
+        let home = HomeViewController(viewModel: HomeViewModel())
         let homeimage = UIImage(systemName: "house")
         let homeselected = UIImage(systemName: "house.fill")
         home.tabBarItem =  UITabBarItem(title: "Home", image: homeimage, selectedImage: homeselected)
