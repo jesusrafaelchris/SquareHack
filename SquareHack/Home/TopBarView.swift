@@ -9,7 +9,9 @@ import UIKit
 import Firebase
 
 class TopBarView: UIView {
-
+    
+    var signOutHandler: (() -> Void)?
+    
     lazy var profileImage: UIButton = {
         let imageView = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .bold, scale: .large)
@@ -17,6 +19,19 @@ class TopBarView: UIView {
         imageView.setImage(largeBoldDoc, for: .normal)
 //        imageView.addTarget(self, action: #selector(), for: .touchUpInside)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let profileAction = UIAction(title: "Profile", image: UIImage(systemName: "person.crop.circle"), identifier: nil) { _ in
+        }
+        let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gearshape"), identifier: nil) { _ in
+        }
+        let signOutAction = UIAction(title: "Sign Out", image: UIImage(systemName: "arrowshape.turn.up.backward"), attributes: .destructive) { _ in
+            self.signOutHandler?()
+        }
+        let submenu = UIMenu(title: "", options: .displayInline, children: [signOutAction])
+        let menu = UIMenu(title: "", children: [profileAction, settingsAction, submenu])
+        imageView.menu = menu
+        imageView.showsMenuAsPrimaryAction = true
+        
         return imageView
     }()
 
@@ -75,10 +90,8 @@ class TopBarView: UIView {
         addSubview(timeLabel)
         addSubview(nameLabel)
         
-        profileImage.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: rightAnchor, paddingRight: 0, width: 0, height: 0)
+        profileImage.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: rightAnchor, paddingRight: 8, width: 28, height: 28)
         profileImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        profileImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        profileImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
         
         timeLabel.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
         
