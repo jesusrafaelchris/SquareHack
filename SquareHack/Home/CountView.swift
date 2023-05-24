@@ -19,7 +19,7 @@ class CountView: UIView {
     lazy var rewardPoints: UILabel = {
         let text = UILabel()
         text.textColor = .black
-        text.font = UIFont.boldSystemFont(ofSize: 40)
+        text.font = UIFont.boldSystemFont(ofSize: 38)
         return text
     }()
     
@@ -39,22 +39,29 @@ class CountView: UIView {
         return text
     }()
     
+    lazy var rewardPointsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [rewardPoints, availablePoints])
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        stackView.spacing = 8
+        return stackView
+    }()
+
+    lazy var countStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [rewardLabel, rewardPointsStackView, tierLabel])
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .leading
+        stackView.spacing = 1
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(countStackView)
         
-        addSubview(rewardLabel)
-        addSubview(rewardPoints)
-        addSubview(availablePoints)
-        addSubview(tierLabel)
-        
-        rewardLabel.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 24, right: nil, paddingRight: 0, width: 0, height: 0)
-            
-        rewardPoints.anchor(top: rewardLabel.bottomAnchor, paddingTop: 1, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 24, right: nil, paddingRight: 0, width: 0, height: 0)
-        
-        availablePoints.anchor(top: rewardLabel.bottomAnchor, paddingTop: 1, bottom: nil, paddingBottom: 0, left: rewardPoints.rightAnchor, paddingLeft: 8, right: nil, paddingRight: 0, width: 0, height: 0)
-        availablePoints.centerYAnchor.constraint(equalTo: rewardPoints.centerYAnchor).isActive = true
-        
-        tierLabel.anchor(top: rewardPoints.bottomAnchor, paddingTop: 1, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 24, right: nil, paddingRight: 0, width: 0, height: 0)
+        countStackView.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
 
     }
     
