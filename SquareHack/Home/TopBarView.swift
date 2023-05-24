@@ -82,7 +82,7 @@ class TopBarView: UIView {
         
         timeLabel.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
         
-        nameLabel.anchor(top: timeLabel.bottomAnchor, paddingTop: 2, bottom: bottomAnchor, paddingBottom: 0, left: leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
+        nameLabel.anchor(top: timeLabel.bottomAnchor, paddingTop: 1, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
 
     }
 
