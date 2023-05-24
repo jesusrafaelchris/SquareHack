@@ -12,6 +12,9 @@ class HomeViewController: UIViewController {
     
     lazy var topBarView: TopBarView = {
         let topBarView = TopBarView()
+        topBarView.signOutHandler = { [weak self] in
+            self?.logOut()
+        }
         return topBarView
     }()
     
@@ -48,17 +51,6 @@ class HomeViewController: UIViewController {
         return Auth.auth().currentUser?.uid ?? ""
     }
     
-    lazy var logOutButton: UIButton = {
-        let logOutButton = UIButton()
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 35, weight: .bold, scale: .large)
-        let largeBoldDoc = UIImage(systemName: "x.circle.fill", withConfiguration: largeConfig)?.withTintColor(.black).withRenderingMode(.alwaysOriginal)
-        logOutButton.setImage(largeBoldDoc, for: .normal)
-        logOutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
-        logOutButton.translatesAutoresizingMaskIntoConstraints = false
-
-        return logOutButton
-    }()
-    
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -69,6 +61,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         setUpView()
         view.backgroundColor = .white
@@ -89,19 +82,15 @@ class HomeViewController: UIViewController {
         view.addSubview(countView)
         view.addSubview(rewardLabel)
         view.addSubview(rewardCollectionView)
-        view.addSubview(logOutButton)
 
         
-        topBarView.anchor(top: view.topAnchor, paddingTop: 70, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 33)
+        topBarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 33)
 
         countView.anchor(top: topBarView.bottomAnchor, paddingTop: 44, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 64)
         
         rewardLabel.anchor(top: countView.bottomAnchor, paddingTop: 88, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
         rewardCollectionView.anchor(top: rewardLabel.bottomAnchor, paddingTop: -20, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 200)
-        
-        logOutButton.anchor(top: rewardCollectionView.topAnchor, paddingTop: 300, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 35, height: 35)
-        logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
