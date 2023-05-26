@@ -39,6 +39,13 @@ class CountView: UIView {
         return text
     }()
     
+    lazy var progressView: ProgressView = {
+        let progressView = ProgressView()
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        progressView.backgroundColor = .clear
+        return progressView
+    }()
+    
     lazy var rewardPointsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [rewardPoints, availablePoints])
         stackView.axis = .horizontal
@@ -47,9 +54,16 @@ class CountView: UIView {
         stackView.spacing = 8
         return stackView
     }()
+    
+    lazy var spacerView: UIView = {
+        let spacerView = UIView()
+        spacerView.backgroundColor = .clear
+        spacerView.translatesAutoresizingMaskIntoConstraints = false
+        return spacerView
+    }()
 
     lazy var countStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [rewardLabel, rewardPointsStackView, tierLabel])
+        let stackView = UIStackView(arrangedSubviews: [rewardLabel, rewardPointsStackView, tierLabel, spacerView, progressView])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .leading
@@ -58,11 +72,17 @@ class CountView: UIView {
     }()
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(countStackView)
-        
-        countStackView.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
+         super.init(frame: frame)
 
+         addSubview(countStackView)
+         countStackView.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
+
+         NSLayoutConstraint.activate([
+              spacerView.heightAnchor.constraint(equalToConstant: 10),
+              progressView.topAnchor.constraint(equalTo: spacerView.bottomAnchor, constant: -55),
+              progressView.heightAnchor.constraint(equalToConstant: 100),
+              progressView.widthAnchor.constraint(equalToConstant: 360),
+         ])
     }
     
     func updatePointsAndTier(points: Int) {

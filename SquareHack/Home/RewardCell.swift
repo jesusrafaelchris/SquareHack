@@ -8,16 +8,14 @@
 import UIKit
 
 class RewardCell: UICollectionViewCell {
+    
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "github")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 16
-        imageView.layer.shadowColor = UIColor.black.cgColor
-        imageView.layer.shadowOpacity = 0.8
-        imageView.layer.shadowRadius = 30
-        imageView.layer.shadowOffset = CGSize(width: 1, height: 1)
+
         return imageView
     }()
     
@@ -39,9 +37,14 @@ class RewardCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 0, height: 1)
+        layer.shadowRadius = 2
         setUpView()
     }
     
+
     func configure(data: Reward) {
         imageView.image = UIImage(named: data.image)
         titleLabel.text = data.title
