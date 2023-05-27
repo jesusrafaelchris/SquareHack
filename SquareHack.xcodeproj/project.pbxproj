@@ -53,6 +53,7 @@
 		DAE57DA42A201AD800C78A8B /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA32A201AD800C78A8B /* SearchTextField.swift */; };
 		DAE57DA62A20A90E00C78A8B /* RecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA52A20A90E00C78A8B /* RecommendedCell.swift */; };
 		DAE57DA82A20F8E800C78A8B /* SuccessPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */; };
+		DAE57DAA2A22313E00C78A8B /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		DAE57DA32A201AD800C78A8B /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		DAE57DA52A20A90E00C78A8B /* RecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
 		DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPayViewController.swift; sourceTree = "<group>"; };
+		DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 				DAE57DA12A200EA700C78A8B /* DiscoverViewController.swift */,
 				DAE57DA32A201AD800C78A8B /* SearchTextField.swift */,
 				DAE57DA52A20A90E00C78A8B /* RecommendedCell.swift */,
+				DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				80E796992A1B6B2200353DDD /* SubscriptionAPICoordinator.swift in Sources */,
 				80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */,
 				80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */,
+				DAE57DAA2A22313E00C78A8B /* DiscoverViewModel.swift in Sources */,
 				80E796D02A1CB90B00353DDD /* UIView+Ext.swift in Sources */,
 				DAE57DA22A200EA700C78A8B /* DiscoverViewController.swift in Sources */,
 				DAE57DA82A20F8E800C78A8B /* SuccessPayViewController.swift in Sources */,
