@@ -47,20 +47,26 @@ class RecommendedCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var gradientLayer: CAGradientLayer = {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor]
-        gradientLayer.locations = [0.58, 0.6]
-        return gradientLayer
+    let whiteBoxView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 16
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        return view
     }()
     
     lazy var darkOverlay: UIView = {
         let overlay = UIView()
-        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.30)
         overlay.layer.cornerRadius = 16
         overlay.layer.masksToBounds = true
         return overlay
     }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        darkOverlay.frame = imageView.bounds
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,11 +81,6 @@ class RecommendedCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = imageView.bounds
-        darkOverlay.frame = imageView.bounds
-    }
     
     func configure(data: Recommended) {
         imageView.image = UIImage(named: data.image)
@@ -91,11 +92,15 @@ class RecommendedCell: UICollectionViewCell {
     private func setUpView() {
         addSubview(imageView)
         imageView.addSubview(darkOverlay)
-        imageView.layer.addSublayer(gradientLayer)
-        imageView.addSubview(typeLabel)
+        addSubview(whiteBoxView)
+        whiteBoxView.addSubview(typeLabel)
         imageView.addSubview(titleLabel)
         imageView.addSubview(logoBackgroundView)
         logoBackgroundView.addSubview(logoImageView)
+
+            
+        whiteBoxView.translatesAutoresizingMaskIntoConstraints = false
+        whiteBoxView.anchor(top: imageView.bottomAnchor, paddingTop: -0.4*150, bottom: imageView.bottomAnchor, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 0, right: imageView.rightAnchor, paddingRight: 0, width: 0, height: 0)
         
         imageView.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 0, right: rightAnchor, paddingRight: 0, width: 240, height: 150)
         

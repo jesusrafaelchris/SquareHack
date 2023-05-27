@@ -4,18 +4,13 @@ import Firebase
 class HomeViewController: UIViewController {
     
     var rewards: [Reward] = [
-        Reward(image: "github", title: "Terry", type: "0.001"),
-        Reward(image: "github", title: "Nine", type: "0.002"),
-        Reward(image: "github", title: "Rocky", type: "0.0005"),
-        Reward(image: "github", title: "KFC", type: "0.002"),
+        Reward(image: "github", logo: "github", title: "Terry", type: "3 more purchases"),
+        Reward(image: "github", logo: "github", title: "Nine", type: "2 more purchases"),
+        Reward(image: "github", logo: "github", title: "Rocky", type: "4 more purchases"),
+        Reward(image: "github", logo: "github", title: "KFC", type: "1 more purchases"),
     ]
     
-    var favourites: [Favourite] = [
-        Favourite(image: "github", logo: "mcdonalds", title: "KFC", type: "0.002"),
-        Favourite(image: "github", logo: "mcdonalds", title: "KFC", type: "0.002"),
-        Favourite(image: "github", logo: "mcdonalds", title: "KFC", type: "0.002"),
-        Favourite(image: "github", logo: "mcdonalds", title: "KFC", type: "0.002"),
-    ]
+    var favourites: [Favourite] = []
     
     lazy var topBarView: TopBarView = {
         let topBarView = TopBarView()
@@ -38,6 +33,14 @@ class HomeViewController: UIViewController {
         return label
     }()
     
+    lazy var rewardMoreButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("See all", for: .normal)
+        button.setTitleColor(.redColour, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return button
+    }()
+    
     lazy var rewardCollectionView: UICollectionView = {
         let flowlayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .horizontal
@@ -57,6 +60,14 @@ class HomeViewController: UIViewController {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "Favourites"
         return label
+    }()
+    
+    lazy var favouriteMoreButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("See all", for: .normal)
+        button.setTitleColor(.redColour, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return button
     }()
     
     lazy var favouriteCollectionView: UICollectionView = {
@@ -98,6 +109,19 @@ class HomeViewController: UIViewController {
                 self.countView.updatePointsAndTier(points: points)
             })
         }
+
+        favouriteCollectionView.delegate = self
+        favouriteCollectionView.dataSource = self
+                
+        viewModel?.fetchFavourites { [weak self] error in
+            if let error = error {
+                print("Failed to fetch favourites: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    self?.favouriteCollectionView.reloadData() 
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,8 +132,10 @@ class HomeViewController: UIViewController {
         view.addSubview(topBarView)
         view.addSubview(countView)
         view.addSubview(rewardLabel)
+        view.addSubview(rewardMoreButton)
         view.addSubview(rewardCollectionView)
         view.addSubview(favouriteLabel)
+        view.addSubview(favouriteMoreButton)
         view.addSubview(favouriteCollectionView)
 
         topBarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 33)
@@ -118,11 +144,15 @@ class HomeViewController: UIViewController {
         
         rewardLabel.anchor(top: countView.bottomAnchor, paddingTop: 88, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
-        rewardCollectionView.anchor(top: rewardLabel.bottomAnchor, paddingTop: -20, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 200)
+        rewardMoreButton.anchor(top: countView.bottomAnchor, paddingTop: 84, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        
+        rewardCollectionView.anchor(top: rewardLabel.bottomAnchor, paddingTop: -4, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 170)
         
         favouriteLabel.anchor(top: rewardCollectionView.bottomAnchor, paddingTop: 4, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
-        favouriteCollectionView.anchor(top: favouriteLabel.bottomAnchor, paddingTop: -2, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 180)
+        favouriteMoreButton.anchor(top: rewardCollectionView.bottomAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        
+        favouriteCollectionView.anchor(top: favouriteLabel.bottomAnchor, paddingTop: -2, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 180)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -162,7 +192,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == rewardCollectionView {
             return rewards.count
         } else {
-            return favourites.count
+            return viewModel?.favourites.count ?? 0
         }
     }
     
@@ -171,33 +201,36 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "rewardCell",
                 for: indexPath) as? RewardCell else { return UICollectionViewCell() }
-            let data = rewards[indexPath.item]
+            let reward = rewards[indexPath.row]
+            cell.configure(data: reward)
             cell.backgroundColor = .clear
-            cell.configure(data: data)
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "favouriteCell",
                 for: indexPath) as? FavouriteCell else { return UICollectionViewCell() }
-            let data = favourites[indexPath.item]
+            if let favourite = viewModel?.favourites[indexPath.row] {
+                cell.titleLabel.text = favourite.title
+                cell.typeLabel.text = favourite.type
+                cell.configure(data: favourite)
+            }
             cell.backgroundColor = .clear
-            cell.configure(data: data)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == rewardCollectionView {
-            let itemSize = CGSize(width: 120, height: 140)
+            let itemSize = CGSize(width: 130, height: 145)
             return itemSize
         } else {
-            let itemSize = CGSize(width: 245, height: 160)
+            let itemSize = CGSize(width: 240, height: 160)
             return itemSize
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -205,6 +238,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        if collectionView == rewardCollectionView {
+            return 10
+        } else {
+            return 10
+        }
     }
 }

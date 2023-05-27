@@ -17,10 +17,11 @@ class TopBarView: UIView {
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .bold, scale: .large)
         let largeBoldDoc = UIImage(systemName: "person.fill", withConfiguration: largeConfig)?.withTintColor(.black).withRenderingMode(.alwaysOriginal)
         imageView.setImage(largeBoldDoc, for: .normal)
-//        imageView.addTarget(self, action: #selector(), for: .touchUpInside)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let profileAction = UIAction(title: "Profile", image: UIImage(systemName: "person.crop.circle"), identifier: nil) { _ in
+        }
+        let subscriptionAction = UIAction(title: "Manage Subscription", image: UIImage(systemName: "pencil"), identifier: nil) { _ in
         }
         let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gearshape"), identifier: nil) { _ in
         }
@@ -28,7 +29,7 @@ class TopBarView: UIView {
             self.signOutHandler?()
         }
         let submenu = UIMenu(title: "", options: .displayInline, children: [signOutAction])
-        let menu = UIMenu(title: "", children: [profileAction, settingsAction, submenu])
+        let menu = UIMenu(title: "", children: [profileAction, subscriptionAction, settingsAction, submenu])
         imageView.menu = menu
         imageView.showsMenuAsPrimaryAction = true
         

@@ -39,7 +39,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let homeselected = UIImage(systemName: "safari.fill")
         home.tabBarItem =  UITabBarItem(title: "Discover", image: homeimage, selectedImage: homeselected)
         
-        let discover = DiscoverViewController()
+        let discover = DiscoverViewController(viewModel: DiscoverViewModel())
         let discoverimage = UIImage(systemName: "bag")
         let discoverselected = UIImage(systemName: "bag.fill")
         discover.tabBarItem =  UITabBarItem(title: "Browse", image: discoverimage, selectedImage: discoverselected)

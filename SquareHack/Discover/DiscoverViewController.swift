@@ -51,6 +51,14 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         return label
     }()
     
+    lazy var recommendedMoreButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("See all", for: .normal)
+        button.setTitleColor(.redColour, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return button
+    }()
+    
     lazy var recommendedCollectionView: UICollectionView = {
         let flowlayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .horizontal
@@ -72,6 +80,14 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         return label
     }()
     
+    lazy var newMoreButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("See all", for: .normal)
+        button.setTitleColor(.redColour, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return button
+    }()
+    
     lazy var newCollectionView: UICollectionView = {
         let flowlayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .horizontal
@@ -84,6 +100,17 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         collectionview.showsHorizontalScrollIndicator = false
         return collectionview
     }()
+    
+    var viewModel: DiscoverViewModelProtocol?
+        
+    init(viewModel: DiscoverViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
@@ -98,11 +125,27 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         }
         setUpView()
         view.backgroundColor = .white
-
+        
+        recommendedCollectionView.delegate = self
+        recommendedCollectionView.dataSource = self
+        
+        newCollectionView.delegate = self
+        newCollectionView.dataSource = self
+                
+        viewModel?.fetchRecommends { [weak self] error in
+            if let error = error {
+                print("Failed to fetch favourites: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    self?.recommendedCollectionView.reloadData()
+                    self?.newCollectionView.reloadData()
+                }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+        super.view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
     
@@ -121,7 +164,7 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             self.userLocation = location
-            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 350, longitudinalMeters: 350)
             miniMapView.setRegion(region, animated: true)
         }
     }
@@ -131,8 +174,10 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         view.addSubview(areaLabel)
         view.addSubview(miniMapView)
         view.addSubview(recommendedLabel)
+        view.addSubview(recommendedMoreButton)
         view.addSubview(recommendedCollectionView)
         view.addSubview(newLabel)
+        view.addSubview(newMoreButton)
         view.addSubview(newCollectionView)
         
         searchBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 50)
@@ -143,9 +188,13 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         
         recommendedLabel.anchor(top: miniMapView.bottomAnchor, paddingTop: 20, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
+        recommendedMoreButton.anchor(top: miniMapView.bottomAnchor, paddingTop: 16, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        
         recommendedCollectionView.anchor(top: recommendedLabel.bottomAnchor, paddingTop: -2, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 180)
         
         newLabel.anchor(top: recommendedCollectionView.bottomAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
+        
+        newMoreButton.anchor(top: recommendedCollectionView.bottomAnchor, paddingTop: -4, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
         
         newCollectionView.anchor(top: newLabel.bottomAnchor, paddingTop: -2, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 180)
         
@@ -155,21 +204,23 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
 extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommends.count
+        return viewModel?.recommends.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "recommendedCell",
             for: indexPath) as? RecommendedCell else { return UICollectionViewCell() }
-        let data = recommends[indexPath.item]
-        cell.backgroundColor = .clear
-        cell.configure(data: data)
+        if let recommends = viewModel?.recommends[indexPath.row] {
+            cell.titleLabel.text = recommends.title
+            cell.typeLabel.text = recommends.type
+            cell.configure(data: recommends)
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSize = CGSize(width: 245, height: 160)
+        let itemSize = CGSize(width: 240, height: 160)
         return itemSize
     }
     

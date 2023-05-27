@@ -2,7 +2,7 @@
 //  SuccessPayViewController.swift
 //  SquareHack
 //
-//  Created by Artemiy Malyshau on 26/05/2023.
+//  Created by JJ on 24/05/2023.
 //
 
 import UIKit
