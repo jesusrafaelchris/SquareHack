@@ -54,6 +54,7 @@
 		DAE57DA62A20A90E00C78A8B /* RecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA52A20A90E00C78A8B /* RecommendedCell.swift */; };
 		DAE57DA82A20F8E800C78A8B /* SuccessPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */; };
 		DAE57DAA2A22313E00C78A8B /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */; };
+		DAE57DAC2A22A79B00C78A8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DAB2A22A79B00C78A8B /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		DAE57DA52A20A90E00C78A8B /* RecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
 		DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPayViewController.swift; sourceTree = "<group>"; };
 		DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		DAE57DAB2A22A79B00C78A8B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 				DAE57DA32A201AD800C78A8B /* SearchTextField.swift */,
 				DAE57DA52A20A90E00C78A8B /* RecommendedCell.swift */,
 				DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */,
+				DAE57DAB2A22A79B00C78A8B /* MapViewController.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				DAE57DA82A20F8E800C78A8B /* SuccessPayViewController.swift in Sources */,
 				806956BF2A1CFDD000B45956 /* OrderDetailHeaderView.swift in Sources */,
 				DAE57DA42A201AD800C78A8B /* SearchTextField.swift in Sources */,
+				DAE57DAC2A22A79B00C78A8B /* MapViewController.swift in Sources */,
 				806956B02A1CCF2100B45956 /* SignUpError.swift in Sources */,
 				80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */,
 				DAD3900F2A1D341100ECF68F /* CountView.swift in Sources */,

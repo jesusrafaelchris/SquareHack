@@ -18,18 +18,15 @@ class RecommendedCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var logoBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 20
-        return view
-    }()
-    
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 0
+        imageView.layer.cornerRadius = 25
+        imageView.layer.borderWidth = 2
+        if let creamColor = UIColor.creamColour?.cgColor {
+            imageView.layer.borderColor = creamColor
+        }
         return imageView
     }()
     
@@ -37,6 +34,9 @@ class RecommendedCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
@@ -45,6 +45,19 @@ class RecommendedCell: UICollectionViewCell {
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
+    }()
+    
+    lazy var hasOfferButton: UIButton = {
+        let button = UIButton()
+        if let creamColor = UIColor.redColour?.cgColor {
+            button.layer.backgroundColor = creamColor
+        }
+        button.setTitle("Offer", for: .normal)
+        button.setTitleColor(.creamColour, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.layer.cornerRadius = 10.5
+        button.isEnabled = false
+        return button
     }()
     
     let whiteBoxView: UIView = {
@@ -95,8 +108,8 @@ class RecommendedCell: UICollectionViewCell {
         addSubview(whiteBoxView)
         whiteBoxView.addSubview(typeLabel)
         imageView.addSubview(titleLabel)
-        imageView.addSubview(logoBackgroundView)
-        logoBackgroundView.addSubview(logoImageView)
+        imageView.addSubview(logoImageView)
+        imageView.addSubview(hasOfferButton)
 
             
         whiteBoxView.translatesAutoresizingMaskIntoConstraints = false
@@ -104,18 +117,15 @@ class RecommendedCell: UICollectionViewCell {
         
         imageView.anchor(top: topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: leftAnchor, paddingLeft: 0, right: rightAnchor, paddingRight: 0, width: 240, height: 150)
         
-        logoBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        logoBackgroundView.anchor(top: imageView.bottomAnchor, paddingTop: -110, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 10, right: nil, paddingRight: 0, width: 40, height: 40)
-        
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 25, height: 25)
-        logoImageView.centerYAnchor.constraint(equalTo: logoBackgroundView.centerYAnchor).isActive = true
-        logoImageView.centerXAnchor.constraint(equalTo: logoBackgroundView.centerXAnchor).isActive = true
+        logoImageView.anchor(top: imageView.topAnchor, paddingTop: 25, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 50, height: 50)
         
-        titleLabel.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: logoBackgroundView.rightAnchor, paddingLeft: 8, right: nil, paddingRight: 0, width: 0, height: 0)
-        titleLabel.centerYAnchor.constraint(equalTo: logoBackgroundView.centerYAnchor).isActive = true
+        titleLabel.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: logoImageView.rightAnchor, paddingLeft: 8, right: imageView.rightAnchor, paddingRight: 36, width: 0, height: 0)
+        titleLabel.centerYAnchor.constraint(equalTo: logoImageView.centerYAnchor).isActive = true
         
-        typeLabel.anchor(top: imageView.bottomAnchor, paddingTop: -54, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 10, right: imageView.rightAnchor, paddingRight: 8, width: 0, height: 0)
+        hasOfferButton.anchor(top: imageView.topAnchor, paddingTop: 10, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: imageView.rightAnchor, paddingRight: 10, width: 50, height: 21)
+        
+        typeLabel.anchor(top: imageView.bottomAnchor, paddingTop: -54, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 16, right: imageView.rightAnchor, paddingRight: 8, width: 0, height: 0)
     }
 }
 
@@ -124,5 +134,7 @@ struct Recommended {
     var logo: String
     var title: String
     var type: String
+    let latitude: Double
+    let longitude: Double
 }
 

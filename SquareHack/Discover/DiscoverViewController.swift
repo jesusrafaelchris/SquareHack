@@ -9,17 +9,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
+class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     let locationManager = CLLocationManager()
     var userLocation: CLLocation?
     
-    var recommends: [Recommended] = [
-        Recommended(image: "github", logo: "mcdonalds", title: "Terry", type: "0.001"),
-        Recommended(image: "github", logo: "mcdonalds", title: "Nine", type: "0.002"),
-        Recommended(image: "github", logo: "mcdonalds", title: "Rocky", type: "0.0005"),
-        Recommended(image: "github", logo: "mcdonalds", title: "KFC", type: "0.002"),
-    ]
+    var recommends: [Recommended] = []
     
     lazy var searchBar: CustomSearchBar = {
         let searchBar = CustomSearchBar()
@@ -32,8 +27,27 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         mapView.layer.cornerRadius = 22
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.showsUserLocation = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap))
+        mapView.addGestureRecognizer(tapGesture)
+
         return mapView
     }()
+    
+    func transitionToFullMap() {
+        let mapViewController = MapViewController()
+
+        mapViewController.shops = viewModel?.recommends ?? []
+        mapViewController.initialRegion = miniMapView.region  // Pass the current region
+
+        let navigationController = UINavigationController(rootViewController: mapViewController)
+
+        UIView.transition(with: self.view, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+            self.miniMapView.frame = self.view.bounds
+        }) { _ in
+            self.present(navigationController, animated: true)
+        }
+    }
     
     lazy var areaLabel: UILabel = {
         let label = UILabel()
@@ -41,6 +55,14 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "Explore your Area"
         return label
+    }()
+    
+    lazy var mapMoreButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("See map", for: .normal)
+        button.setTitleColor(.redColour, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return button
     }()
     
     lazy var recommendedLabel: UILabel = {
@@ -101,6 +123,37 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         return collectionview
     }()
     
+    @objc func handleMapTap() {
+        transitionToFullMap()
+    }
+    
+    func fetchAndDisplayShops() {
+        viewModel?.fetchRecommends { [weak self] error in
+            guard let self = self else { return }
+
+            if let error = error {
+                // Handle the error...
+                print("Error fetching shops: \(error)")
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.addAnnotationsToMap()
+            }
+        }
+    }
+        
+    func addAnnotationsToMap() {
+        guard let viewModel = viewModel else { return }
+        for shop in viewModel.recommends {
+            let coordinate = CLLocationCoordinate2D(latitude: shop.latitude, longitude: shop.longitude)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = shop.title
+            miniMapView.addAnnotation(annotation)
+        }
+    }
+    
     var viewModel: DiscoverViewModelProtocol?
         
     init(viewModel: DiscoverViewModelProtocol) {
@@ -115,8 +168,8 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
-        
         locationManager.delegate = self
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
@@ -142,22 +195,43 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.view.endEditing(true)
-        super.touchesBegan(touches, with: event)
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func setupSearchBar() {
+        let searchBar = CustomSearchBar()
+        searchBar.delegate = self
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let status = manager.authorizationStatus
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager.startUpdatingLocation()
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            let alert = UIAlertController(title: "Location Access Disabled",
+                                          message: "In order to use this app, please open Settings and enable location services.",
+                                          preferredStyle: .alert)
+            let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+                }
             }
-        }
-        else {
-            // Handle other cases as per your app's requirements
+            alert.addAction(settingsAction)
+            present(alert, animated: true, completion: nil)
+
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.startUpdatingLocation()
+            
+        @unknown default:
+            print("Unknown case in locationManagerDidChangeAuthorization")
         }
     }
     
@@ -172,6 +246,7 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
     func setUpView() {
         view.addSubview(searchBar)
         view.addSubview(areaLabel)
+        view.addSubview(mapMoreButton)
         view.addSubview(miniMapView)
         view.addSubview(recommendedLabel)
         view.addSubview(recommendedMoreButton)
@@ -183,6 +258,8 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate {
         searchBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 50)
         
         areaLabel.anchor(top: searchBar.bottomAnchor, paddingTop: 32, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
+        
+        mapMoreButton.anchor(top: searchBar.bottomAnchor, paddingTop: 28, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
         
         miniMapView.anchor(top: areaLabel.bottomAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 165)
         
@@ -234,5 +311,19 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let searchBar = textField as? CustomSearchBar {
+            searchBar.iconImageView.isHidden = true
+        }
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let searchBar = textField as? CustomSearchBar {
+            searchBar.iconImageView.isHidden = false
+        }
     }
 }

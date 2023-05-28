@@ -9,6 +9,8 @@ import UIKit
 
 class CustomSearchBar: UITextField {
     
+    var textFieldDelegate: UITextFieldDelegate?
+    
     let padding = UIEdgeInsets(top: 0, left: 42, bottom: 0, right: 20)
     
     let iconImageView: UIImageView = {
@@ -34,7 +36,7 @@ class CustomSearchBar: UITextField {
         self.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
         self.layer.cornerRadius = 25
         self.attributedPlaceholder = NSAttributedString(string: "Food, home, services, etc.",
-                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         self.clearButtonMode = .whileEditing
         self.textColor = .black
         

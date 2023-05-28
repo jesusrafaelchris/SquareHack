@@ -43,6 +43,7 @@ class RewardCell: UICollectionViewCell {
         text.textColor = .darkGray
         text.text = "Moin"
         text.font = UIFont.systemFont(ofSize: 14)
+        text.numberOfLines = 0
         return text
     }()
     
@@ -108,7 +109,7 @@ class RewardCell: UICollectionViewCell {
         titleLabel.anchor(top: logoImageView.bottomAnchor, paddingTop: 4, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
         titleLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
         
-        typeLabel.anchor(top: titleLabel.bottomAnchor, paddingTop: 4, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 8, right: nil, paddingRight: 0, width: 0, height: 0)
+        typeLabel.anchor(top: titleLabel.bottomAnchor, paddingTop: 4, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 8, right: imageView.rightAnchor, paddingRight: 8, width: 0, height: 0)
         
     }
 }

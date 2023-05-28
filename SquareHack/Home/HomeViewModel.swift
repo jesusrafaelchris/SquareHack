@@ -49,7 +49,7 @@ class HomeViewModel: HomeViewModelProtocol {
                 let name = document["name"] as? String ?? ""
                 let type = document["type"] as? String ?? ""
                 
-                let favourite = Favourite(image: "github", logo: "mcdondalds", title: name, type: type)
+                let favourite = Favourite(image: "github", logo: "github", title: name, type: type)
                 self.favourites.append(favourite)
             }
             completion(nil)
