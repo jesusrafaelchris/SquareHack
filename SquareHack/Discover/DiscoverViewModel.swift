@@ -33,8 +33,10 @@ class DiscoverViewModel: DiscoverViewModelProtocol {
                 print(document.data())
                 let name = document["name"] as? String ?? ""
                 let type = document["type"] as? String ?? ""
+                let latitude = document["latitude"] as? Double ?? 0
+                let longitude = document["longitude"] as? Double ?? 0
                 
-                let recommend = Recommended(image: "github", logo: "mcdondalds", title: name, type: type)
+                let recommend = Recommended(image: "github", logo: "github", title: name, type: type, latitude: latitude, longitude: longitude)
                 self.recommends.append(recommend)
             }
             completion(nil)
