@@ -1,12 +1,13 @@
-//
-//  TopBarView.swift
 import UIKit
 import Firebase
 
+protocol TopBarViewDelegate: AnyObject {
+    func actionHandle(sender: UIAction)
+}
+
 class TopBarView: UIView {
     
-    var signOutHandler: (() -> Void)?
-    var actionHandler: ((String) -> Void)?
+    weak var delegate: TopBarViewDelegate?
     
     lazy var profileImage: UIButton = {
         let imageView = UIButton()
@@ -14,24 +15,22 @@ class TopBarView: UIView {
         let largeBoldDoc = UIImage(systemName: "person.fill", withConfiguration: largeConfig)?.withTintColor(.black).withRenderingMode(.alwaysOriginal)
         imageView.setImage(largeBoldDoc, for: .normal)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let profileAction = UIAction(title: "Profile", image: UIImage(systemName: "person.crop.circle"), identifier: nil) { _ in
-            self.actionHandler?("Profile")
+        let profileAction = UIAction(title: "Profile", image: UIImage(systemName: "person.crop.circle"), identifier: nil) { sender in
+            self.actionHandle(sender: sender)
         }
-        let subscriptionAction = UIAction(title: "Manage Subscription", image: UIImage(systemName: "pencil"), identifier: nil) { _ in
-            self.actionHandler?("Manage Subscription")
+        let subscriptionAction = UIAction(title: "Manage Subscription", image: UIImage(systemName: "pencil"), identifier: nil) { sender in
+            self.actionHandle(sender: sender)
         }
-        let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gearshape"), identifier: nil) { _ in
-            self.actionHandler?("Settings")
+        let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gearshape"), identifier: nil) { sender in
+            self.actionHandle(sender: sender)
         }
-        let signOutAction = UIAction(title: "Sign Out", image: UIImage(systemName: "arrowshape.turn.up.backward"), attributes: .destructive) { _ in
-            self.signOutHandler?()
+        let signOutAction = UIAction(title: "Sign Out", image: UIImage(systemName: "arrowshape.turn.up.backward"), attributes: .destructive) { sender in
+            self.actionHandle(sender: sender)
         }
         let submenu = UIMenu(title: "", options: .displayInline, children: [signOutAction])
         let menu = UIMenu(title: "", children: [profileAction, subscriptionAction, settingsAction, submenu])
         imageView.menu = menu
         imageView.showsMenuAsPrimaryAction = true
-        
         return imageView
     }()
 
@@ -101,6 +100,10 @@ class TopBarView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func actionHandle(sender: UIAction) {
+        delegate?.actionHandle(sender: sender)
     }
 
 }

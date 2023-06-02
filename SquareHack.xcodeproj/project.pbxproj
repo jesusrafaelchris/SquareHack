@@ -25,6 +25,7 @@
 		806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C32A1D087100B45956 /* OrderItemCell.swift */; };
 		806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C52A1D0E0800B45956 /* OrderItemModel.swift */; };
 		806956C92A1D0F9100B45956 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 806956C82A1D0F9100B45956 /* SDWebImage */; };
+		806956D12A2A042000B45956 /* FavouriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D02A2A042000B45956 /* FavouriteModel.swift */; };
 		80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967D2A1B6A4100353DDD /* AppDelegate.swift */; };
 		80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */; };
 		80E796822A1B6A4100353DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796812A1B6A4100353DDD /* ViewController.swift */; };
@@ -74,6 +75,7 @@
 		806956C12A1CFE2700B45956 /* OrderHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderModel.swift; sourceTree = "<group>"; };
 		806956C32A1D087100B45956 /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
 		806956C52A1D0E0800B45956 /* OrderItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemModel.swift; sourceTree = "<group>"; };
+		806956D02A2A042000B45956 /* FavouriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteModel.swift; sourceTree = "<group>"; };
 		80E7967A2A1B6A4100353DDD /* SquareHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E7967D2A1B6A4100353DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,46 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		806956CC2A2A01FF00B45956 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80E796932A1B6ADC00353DDD /* HomeViewController.swift */,
+				DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */,
+				DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */,
+				DAEF12112A257E350063A4FF /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		806956CD2A2A021400B45956 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				806956B52A1CE72F00B45956 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		806956CE2A2A021C00B45956 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				806956B92A1CE86C00B45956 /* UserModel.swift */,
+				806956D02A2A042000B45956 /* FavouriteModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		806956CF2A2A023500B45956 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DAD3900C2A1D164B00ECF68F /* TopBarView.swift */,
+				DAD3900E2A1D341100ECF68F /* CountView.swift */,
+				DA5AA1982A1DFEB900C36BC3 /* RewardCell.swift */,
+				DAE57D9C2A1F47DC00C78A8B /* FavouriteCell.swift */,
+				DAE57D9E2A1F5ACA00C78A8B /* ProgressView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		80E796712A1B6A4100353DDD = {
 			isa = PBXGroup;
 			children = (
@@ -199,17 +241,10 @@
 		80E796922A1B6A9700353DDD /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				80E796932A1B6ADC00353DDD /* HomeViewController.swift */,
-				806956B52A1CE72F00B45956 /* HomeViewModel.swift */,
-				806956B92A1CE86C00B45956 /* UserModel.swift */,
-				DAD3900C2A1D164B00ECF68F /* TopBarView.swift */,
-				DAD3900E2A1D341100ECF68F /* CountView.swift */,
-				DA5AA1982A1DFEB900C36BC3 /* RewardCell.swift */,
-				DAE57D9C2A1F47DC00C78A8B /* FavouriteCell.swift */,
-				DAE57D9E2A1F5ACA00C78A8B /* ProgressView.swift */,
-				DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */,
-				DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */,
-				DAEF12112A257E350063A4FF /* SettingsViewController.swift */,
+				806956CC2A2A01FF00B45956 /* ViewController */,
+				806956CD2A2A021400B45956 /* ViewModel */,
+				806956CE2A2A021C00B45956 /* Model */,
+				806956CF2A2A023500B45956 /* Views */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -384,6 +419,7 @@
 				80E796CD2A1CB7C400353DDD /* ChooseSorLViewController.swift in Sources */,
 				DA5AA1992A1DFEB900C36BC3 /* RewardCell.swift in Sources */,
 				80E796C42A1BF7E800353DDD /* ScanToPayViewController.swift in Sources */,
+				806956D12A2A042000B45956 /* FavouriteModel.swift in Sources */,
 				DAE57D9F2A1F5ACA00C78A8B /* ProgressView.swift in Sources */,
 				806956BC2A1CFCF300B45956 /* OrderDetailsViewController.swift in Sources */,
 				80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */,

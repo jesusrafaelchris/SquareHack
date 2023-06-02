@@ -3,6 +3,8 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
+    var viewModel: HomeViewModelProtocol?
+    
     var rewards: [Reward] = [
         Reward(image: "github", logo: "github", title: "Terry", type: "3 more purchases"),
         Reward(image: "github", logo: "github", title: "Nine", type: "2 more purchases"),
@@ -10,35 +12,15 @@ class HomeViewController: UIViewController {
         Reward(image: "github", logo: "github", title: "KFC", type: "1 more purchases"),
     ]
     
-    var favourites: [Favourite] = []
+    var favourites = [FavouriteModel]()
     
     lazy var topBarView: TopBarView = {
         let topBarView = TopBarView()
-        topBarView.signOutHandler = { [weak self] in
-            self?.logOut()
-        }
-        topBarView.actionHandler = { [weak self] action in
-            switch action {
-            case "Profile":
-                let profileVC = ProfileViewController()
-                self?.present(profileVC, animated: true, completion: nil)
-            case "Manage Subscription":
-                let subscriptionVC = SubscriptionViewController()
-                self?.present(subscriptionVC, animated: true, completion: nil)
-            case "Settings":
-                let settingsVC = SettingsViewController()
-                self?.present(settingsVC, animated: true, completion: nil)
-            default:
-                break
-            }
-        }
+        topBarView.delegate = self
         return topBarView
     }()
     
-    lazy var countView: CountView = {
-        let countView = CountView()
-        return countView
-    }()
+    lazy var countView = CountView()
     
     lazy var rewardLabel: UILabel = {
         let label = UILabel()
@@ -98,12 +80,6 @@ class HomeViewController: UIViewController {
         return collectionview
     }()
     
-    var viewModel: HomeViewModelProtocol?
-    
-    var uid: String {
-        return Auth.auth().currentUser?.uid ?? ""
-    }
-    
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -114,36 +90,14 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         setUpView()
-        view.backgroundColor = .white
-        
-        if checkLoggedIn() {
-            viewModel?.getUserPointsBalance(completion: { points in
-                self.countView.updatePointsAndTier(points: points)
-            })
-        }
-
-        favouriteCollectionView.delegate = self
-        favouriteCollectionView.dataSource = self
-                
-        viewModel?.fetchFavourites { [weak self] error in
-            if let error = error {
-                print("Failed to fetch favourites: \(error.localizedDescription)")
-            } else {
-                DispatchQueue.main.async {
-                    self?.favouriteCollectionView.reloadData() 
-                }
-            }
-        }
+        checkLoggedIn()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-  
     func setUpView() {
+        navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = .white
         view.addSubview(topBarView)
         view.addSubview(countView)
         view.addSubview(rewardLabel)
@@ -153,7 +107,7 @@ class HomeViewController: UIViewController {
         view.addSubview(favouriteMoreButton)
         view.addSubview(favouriteCollectionView)
 
-        topBarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 33)
+        topBarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 32)
 
         countView.anchor(top: topBarView.bottomAnchor, paddingTop: 44, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 64)
         
@@ -169,12 +123,6 @@ class HomeViewController: UIViewController {
         
         favouriteCollectionView.anchor(top: favouriteLabel.bottomAnchor, paddingTop: -2, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 180)
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewModel?.pointsListener?.remove()
-    }
-    
     
     @objc func logOut() {
         do {
@@ -190,13 +138,44 @@ class HomeViewController: UIViewController {
         present(nav, animated: false)
     }
 
-    func checkLoggedIn() -> Bool {
+    func checkLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
             logOut()
-            return false
         } else {
-            // load data
-            return true
+            setupUI()
+        }
+    }
+    
+    func setupUI() {
+        viewModel?.fetchFavourites { [weak self] favourites in
+            self?.favourites = favourites
+            DispatchQueue.main.async {
+                self?.favouriteCollectionView.reloadData()
+            }
+        }
+        
+        viewModel?.getUserPointsBalance(completion: { [weak self] points in
+            self?.countView.updatePointsAndTier(points: points)
+        })
+    }
+}
+
+
+extension HomeViewController: TopBarViewDelegate {
+    
+    func actionHandle(sender: UIAction) {
+        switch sender.title {
+        case "Profile":
+            let profileVC = ProfileViewController()
+            present(profileVC, animated: true, completion: nil)
+        case "Manage Subscription":
+            let subscriptionVC = SubscriptionViewController()
+            present(subscriptionVC, animated: true, completion: nil)
+        case "Settings":
+            let settingsVC = SettingsViewController()
+            present(settingsVC, animated: true, completion: nil)
+        default:
+            break
         }
     }
 }
@@ -207,7 +186,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == rewardCollectionView {
             return rewards.count
         } else {
-            return viewModel?.favourites.count ?? 0
+            return favourites.count
         }
     }
     
@@ -218,18 +197,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 for: indexPath) as? RewardCell else { return UICollectionViewCell() }
             let reward = rewards[indexPath.row]
             cell.configure(data: reward)
-            cell.backgroundColor = .clear
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "favouriteCell",
                 for: indexPath) as? FavouriteCell else { return UICollectionViewCell() }
-            if let favourite = viewModel?.favourites[indexPath.row] {
-                cell.titleLabel.text = favourite.title
-                cell.typeLabel.text = favourite.type
-                cell.configure(data: favourite)
-            }
-            cell.backgroundColor = .clear
+            let favourite = favourites[indexPath.row]
+            cell.configure(data: favourite)
             return cell
         }
     }

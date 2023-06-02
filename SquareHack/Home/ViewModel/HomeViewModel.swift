@@ -4,19 +4,14 @@ import FirebaseFirestore
 
 protocol HomeViewModelProtocol {
     func getUserPointsBalance(completion: @escaping(Int) -> Void)
-    func fetchFavourites(completion: @escaping (Error?) -> Void)
-    var pointsListener: ListenerRegistration? { get set }
-    var favourites: [Favourite] { get }
+    func fetchFavourites(completion: @escaping ([FavouriteModel]) -> Void)
 }
 
 class HomeViewModel: HomeViewModelProtocol {
-        
+    
     let uid: String = Auth.auth().currentUser?.uid ?? ""
     let database = Firestore.firestore()
     var pointsListener: ListenerRegistration?
-    var favouritesListener: ListenerRegistration?
-    var rewards = [Reward]()
-    var favourites = [Favourite]()
     
     func getUserPointsBalance(completion: @escaping(Int) -> Void) {
         pointsListener = database.collection("users").document(uid).addSnapshotListener({ snapshot, error in
@@ -35,24 +30,31 @@ class HomeViewModel: HomeViewModelProtocol {
             }
         })
     }
-
-    func fetchFavourites(completion: @escaping (Error?) -> Void) {
+    
+    func fetchFavourites(completion: @escaping ([FavouriteModel]) -> Void) {
+        var favourites = [FavouriteModel]()
         let collectionRef = Firestore.firestore().collection("shops")
         collectionRef.getDocuments { (snapshot, error) in
+            favourites.removeAll()
             if let error = error {
-                completion(error)
+                print(error)
                 return
             }
-            self.favourites.removeAll()
-            for document in snapshot?.documents ?? [] {
-                print(document.data())
-                let name = document["name"] as? String ?? ""
-                let type = document["type"] as? String ?? ""
-                
-                let favourite = Favourite(image: "github", logo: "github", title: name, type: type)
-                self.favourites.append(favourite)
+            
+            if let documents = snapshot?.documents {
+                for document in documents {
+                    let data = document.data()
+                    do {
+                        let favourite = try JSONDecoder().decode(FavouriteModel.self, fromJSONObject: data)
+                        favourites.append(favourite)
+                    }
+                    catch {
+                        print(error)
+                    }
+                    
+                }
             }
-            completion(nil)
+            completion(favourites)
         }
     }
 }

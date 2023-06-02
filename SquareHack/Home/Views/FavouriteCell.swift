@@ -50,6 +50,7 @@ class FavouriteCell: UICollectionViewCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.layer.cornerRadius = 10.5
         button.isEnabled = false
+        button.isHidden = true
         return button
     }()
     
@@ -88,11 +89,12 @@ class FavouriteCell: UICollectionViewCell {
     }
     
     
-    func configure(data: Favourite) {
-        imageView.image = UIImage(named: data.image)
-        logoImageView.image = UIImage(named: data.logo)
-        titleLabel.text = data.title
+    func configure(data: FavouriteModel) {
+        //imageView.image = UIImage(named: data.image)
+        //logoImageView.image = UIImage(named: data.logo)
+        titleLabel.text = data.name
         typeLabel.text = data.type
+        hasOfferButton.isHidden = !data.hasOffer
     }
     
     private func setUpView() {
@@ -121,11 +123,3 @@ class FavouriteCell: UICollectionViewCell {
         typeLabel.anchor(top: imageView.bottomAnchor, paddingTop: -54, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 16, right: imageView.rightAnchor, paddingRight: 8, width: 0, height: 0)
     }
 }
-
-struct Favourite {
-    var image: String
-    var logo: String
-    var title: String
-    var type: String
-}
-
