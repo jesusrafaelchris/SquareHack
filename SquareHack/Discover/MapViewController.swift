@@ -42,6 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         searchBar.layer.shadowOffset = CGSize(width: 0, height: 1)
         searchBar.layer.shadowRadius = 2
         searchBar.layer.shadowOpacity = 0.3
+        searchBar.font = UIFont.systemFont(ofSize: 16)
         return searchBar
     }()
     
@@ -126,6 +127,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView = MKMapView(frame: self.view.frame)
         mapView.delegate = self
         mapView.showsUserLocation = true
+        mapView.isRotateEnabled = false
 
         if let initialRegion = initialRegion {
             mapView.setRegion(initialRegion, animated: false)
@@ -133,12 +135,52 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
         self.view.addSubview(mapView)
         addPinsForShops(shops: shops)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
             
         setUpView()
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc func mapTapped() {
+        if bottomViewBottomConstraint?.constant != 500 {
+            UIView.animate(withDuration: 0.25) {
+                self.bottomViewHeightConstraint?.isActive = false
+                self.bottomViewHeightConstraint = self.bottomView.heightAnchor.constraint(equalToConstant: 0)
+                self.bottomViewHeightConstraint?.isActive = true
+                self.view.layoutIfNeeded()
+            }
+            
+            UIView.animate(withDuration: 0.25) {
+                self.bottomViewBottomConstraint?.constant = 500
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func viewTapped(_ gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: view)
+        if searchBar.isFirstResponder {
+            view.endEditing(true)
+        } else if !bottomView.frame.contains(location) {
+            if bottomViewBottomConstraint?.constant != 500 {
+                UIView.animate(withDuration: 0.25) {
+                    self.bottomViewHeightConstraint?.isActive = false
+                    self.bottomViewHeightConstraint = self.bottomView.heightAnchor.constraint(equalToConstant: 0)
+                    self.bottomViewHeightConstraint?.isActive = true
+                    self.view.layoutIfNeeded()
+                }
+
+                UIView.animate(withDuration: 0.25) {
+                    self.bottomViewBottomConstraint?.constant = 500
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
     }
     
     func setupSearchBar() {
@@ -189,6 +231,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         filterButton.translatesAutoresizingMaskIntoConstraints = false
         filterButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 20, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.safeAreaLayoutGuide.rightAnchor, paddingRight: 12, width: 40, height: 40)
+        
+        
 
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         bottomViewBottomConstraint = bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 500)

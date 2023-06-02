@@ -2,6 +2,8 @@ import UIKit
 
 class OrderDetailsViewController: UIViewController {
     
+    var scannedCode: String?
+    
     var orderItems = [
         OrderItemModel(amount: "1", itemImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/1200px-Hamburger_%28black_bg%29.jpg", itemTitle: "Double Cheeseburger", itemDescription: "Cheese, Tomato, Lettuce", itemprice: "32.16", availablePoints: 1429),
         OrderItemModel(amount: "4", itemImage: "https://www.recipetineats.com/wp-content/uploads/2022/09/Fries-with-rosemary-salt_1.jpg", itemTitle: "Fries", itemDescription: "Peri Salt, Mayonaise", itemprice: "4.30", availablePoints: 62)
@@ -10,6 +12,14 @@ class OrderDetailsViewController: UIViewController {
     lazy var headerview: OrderDetailHeaderView = {
         let view = OrderDetailHeaderView()
         return view
+    }()
+    
+    lazy var qrCodeString: UILabel = {
+        let label = UILabel()
+        label.text = scannedCode
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .black
+        return label
     }()
     
     lazy var orderCollectionView: UICollectionView = {
@@ -60,6 +70,7 @@ class OrderDetailsViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(headerview)
         view.addSubview(orderCollectionView)
+        view.addSubview(qrCodeString)
         
         headerview.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 12,
                              bottom: nil, paddingBottom: 0,
@@ -74,6 +85,11 @@ class OrderDetailsViewController: UIViewController {
                                    left: view.leftAnchor, paddingLeft: 20,
                                    right: view.rightAnchor, paddingRight: 20,
                                    width: 0, height: 200)
+        
+        qrCodeString.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
+        qrCodeString.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        qrCodeString.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
     }
     
     func addBottomBorder() {

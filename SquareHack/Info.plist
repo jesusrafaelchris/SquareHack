@@ -31,5 +31,7 @@
     <string>UIStatusBarStyleLightContent</string>
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Used to scan QR codes</string>
 </dict>
 </plist>
