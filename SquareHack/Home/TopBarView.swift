@@ -11,6 +11,7 @@ import Firebase
 class TopBarView: UIView {
     
     var signOutHandler: (() -> Void)?
+    var actionHandler: ((String) -> Void)?
     
     lazy var profileImage: UIButton = {
         let imageView = UIButton()
@@ -20,10 +21,13 @@ class TopBarView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let profileAction = UIAction(title: "Profile", image: UIImage(systemName: "person.crop.circle"), identifier: nil) { _ in
+            self.actionHandler?("Profile")
         }
         let subscriptionAction = UIAction(title: "Manage Subscription", image: UIImage(systemName: "pencil"), identifier: nil) { _ in
+            self.actionHandler?("Manage Subscription")
         }
         let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gearshape"), identifier: nil) { _ in
+            self.actionHandler?("Settings")
         }
         let signOutAction = UIAction(title: "Sign Out", image: UIImage(systemName: "arrowshape.turn.up.backward"), attributes: .destructive) { _ in
             self.signOutHandler?()

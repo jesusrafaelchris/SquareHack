@@ -17,6 +17,21 @@ class HomeViewController: UIViewController {
         topBarView.signOutHandler = { [weak self] in
             self?.logOut()
         }
+        topBarView.actionHandler = { [weak self] action in
+            switch action {
+            case "Profile":
+                let profileVC = ProfileViewController()
+                self?.present(profileVC, animated: true, completion: nil)
+            case "Manage Subscription":
+                let subscriptionVC = SubscriptionViewController()
+                self?.present(subscriptionVC, animated: true, completion: nil)
+            case "Settings":
+                let settingsVC = SettingsViewController()
+                self?.present(settingsVC, animated: true, completion: nil)
+            default:
+                break
+            }
+        }
         return topBarView
     }()
     
@@ -142,9 +157,9 @@ class HomeViewController: UIViewController {
 
         countView.anchor(top: topBarView.bottomAnchor, paddingTop: 44, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 64)
         
-        rewardLabel.anchor(top: countView.bottomAnchor, paddingTop: 88, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
+        rewardLabel.anchor(top: countView.bottomAnchor, paddingTop: 108, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
-        rewardMoreButton.anchor(top: countView.bottomAnchor, paddingTop: 84, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        rewardMoreButton.anchor(top: countView.bottomAnchor, paddingTop: 104, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
         
         rewardCollectionView.anchor(top: rewardLabel.bottomAnchor, paddingTop: -4, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 10, width: 0, height: 170)
         
@@ -238,10 +253,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == rewardCollectionView {
-            return 10
-        } else {
-            return 10
-        }
+        return 10
     }
 }

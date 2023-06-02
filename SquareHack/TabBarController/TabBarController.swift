@@ -49,12 +49,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let walletselected = UIImage(systemName: "wallet.pass.fill")
         wallet.tabBarItem = UITabBarItem(title: "Wallet", image: walletImage, selectedImage: walletselected)
         
-        let scanToPay = OrderDetailsViewController()
-        let scanToPayimage = UIImage(systemName: "qrcode")
-        let scanToPayselected = UIImage(systemName: "qrcode")
-        scanToPay.tabBarItem = UITabBarItem(title: "Pay", image: scanToPayimage, selectedImage: scanToPayselected)
+        let pay = PayViewController()
+        let payimage = UIImage(systemName: "qrcode")
+        let payselected = UIImage(systemName: "qrcode")
+        pay.tabBarItem = UITabBarItem(title: "Pay", image: payimage, selectedImage: payselected)
         
-        let tabbarList = [home, discover, wallet, scanToPay]
+        let tabbarList = [home, discover, wallet, pay]
         
         viewControllers = tabbarList.map {
             UINavigationController(rootViewController: $0)

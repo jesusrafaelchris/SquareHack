@@ -55,6 +55,11 @@
 		DAE57DA82A20F8E800C78A8B /* SuccessPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */; };
 		DAE57DAA2A22313E00C78A8B /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */; };
 		DAE57DAC2A22A79B00C78A8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DAB2A22A79B00C78A8B /* MapViewController.swift */; };
+		DAEF120A2A25614B0063A4FF /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF12092A25614B0063A4FF /* PayViewController.swift */; };
+		DAEF120C2A2567DC0063A4FF /* QRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF120B2A2567DC0063A4FF /* QRScanViewController.swift */; };
+		DAEF120E2A257CEB0063A4FF /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */; };
+		DAEF12102A257E1A0063A4FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */; };
+		DAEF12122A257E350063A4FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF12112A257E350063A4FF /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +106,11 @@
 		DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPayViewController.swift; sourceTree = "<group>"; };
 		DAE57DA92A22313E00C78A8B /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		DAE57DAB2A22A79B00C78A8B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DAEF12092A25614B0063A4FF /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		DAEF120B2A2567DC0063A4FF /* QRScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanViewController.swift; sourceTree = "<group>"; };
+		DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DAEF12112A257E350063A4FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +176,7 @@
 				80E796C52A1BF83600353DDD /* TabBarController */,
 				80E796922A1B6A9700353DDD /* Home */,
 				80E796C82A1BF8CC00353DDD /* Wallet */,
-				80E796C22A1BF7C500353DDD /* ScanToPay */,
+				80E796C22A1BF7C500353DDD /* Pay */,
 				80E796952A1B6AEA00353DDD /* API */,
 				80E7968B2A1B6A4300353DDD /* Info.plist */,
 			);
@@ -197,6 +207,9 @@
 				DA5AA1982A1DFEB900C36BC3 /* RewardCell.swift */,
 				DAE57D9C2A1F47DC00C78A8B /* FavouriteCell.swift */,
 				DAE57D9E2A1F5ACA00C78A8B /* ProgressView.swift */,
+				DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */,
+				DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */,
+				DAEF12112A257E350063A4FF /* SettingsViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -211,7 +224,7 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		80E796C22A1BF7C500353DDD /* ScanToPay */ = {
+		80E796C22A1BF7C500353DDD /* Pay */ = {
 			isa = PBXGroup;
 			children = (
 				80E796C32A1BF7E800353DDD /* ScanToPayViewController.swift */,
@@ -219,8 +232,10 @@
 				806956C02A1CFE1D00B45956 /* Model */,
 				806956BD2A1CFDC000B45956 /* Views */,
 				DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */,
+				DAEF12092A25614B0063A4FF /* PayViewController.swift */,
+				DAEF120B2A2567DC0063A4FF /* QRScanViewController.swift */,
 			);
-			path = ScanToPay;
+			path = Pay;
 			sourceTree = "<group>";
 		};
 		80E796C52A1BF83600353DDD /* TabBarController */ = {
@@ -359,11 +374,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEF120C2A2567DC0063A4FF /* QRScanViewController.swift in Sources */,
 				806956B82A1CE84800B45956 /* JSONDecoder+Ext.swift in Sources */,
 				DAE57DA62A20A90E00C78A8B /* RecommendedCell.swift in Sources */,
 				806956BA2A1CE86C00B45956 /* UserModel.swift in Sources */,
 				806956B62A1CE72F00B45956 /* HomeViewModel.swift in Sources */,
 				80E7969D2A1B842100353DDD /* TestViewController.swift in Sources */,
+				DAEF120E2A257CEB0063A4FF /* SubscriptionViewController.swift in Sources */,
 				80E796CD2A1CB7C400353DDD /* ChooseSorLViewController.swift in Sources */,
 				DA5AA1992A1DFEB900C36BC3 /* RewardCell.swift in Sources */,
 				80E796C42A1BF7E800353DDD /* ScanToPayViewController.swift in Sources */,
@@ -380,6 +397,7 @@
 				80E796992A1B6B2200353DDD /* SubscriptionAPICoordinator.swift in Sources */,
 				80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */,
 				80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */,
+				DAEF12122A257E350063A4FF /* SettingsViewController.swift in Sources */,
 				DAE57DAA2A22313E00C78A8B /* DiscoverViewModel.swift in Sources */,
 				80E796D02A1CB90B00353DDD /* UIView+Ext.swift in Sources */,
 				DAE57DA22A200EA700C78A8B /* DiscoverViewController.swift in Sources */,
@@ -390,8 +408,10 @@
 				806956B02A1CCF2100B45956 /* SignUpError.swift in Sources */,
 				80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */,
 				DAD3900F2A1D341100ECF68F /* CountView.swift in Sources */,
+				DAEF120A2A25614B0063A4FF /* PayViewController.swift in Sources */,
 				80E796942A1B6ADC00353DDD /* HomeViewController.swift in Sources */,
 				DAE57D9D2A1F47DC00C78A8B /* FavouriteCell.swift in Sources */,
+				DAEF12102A257E1A0063A4FF /* ProfileViewController.swift in Sources */,
 				80E796CA2A1BF8DE00353DDD /* WalletViewController.swift in Sources */,
 				806956C22A1CFE2700B45956 /* OrderHeaderModel.swift in Sources */,
 				806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */,
