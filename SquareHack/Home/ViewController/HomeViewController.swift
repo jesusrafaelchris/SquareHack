@@ -4,6 +4,7 @@ import Firebase
 class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModelProtocol?
+    var catalogAPICoordinator: CatalogAPICoordinatorProtocol?
     
     var rewards: [Reward] = [
         Reward(image: "github", logo: "github", title: "Terry", type: "3 more purchases"),
@@ -80,8 +81,10 @@ class HomeViewController: UIViewController {
         return collectionview
     }()
     
-    init(viewModel: HomeViewModelProtocol) {
+    init(viewModel: HomeViewModelProtocol,
+         catalogAPICoordinator: CatalogAPICoordinatorProtocol) {
         self.viewModel = viewModel
+        self.catalogAPICoordinator = catalogAPICoordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -93,6 +96,20 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         checkLoggedIn()
+//        let uuid = UUID()
+//        let uuidString = uuid.uuidString
+//        let object = CatalogObjectModel(idempotencyKey: uuidString, object: ItemObject(type: "ITEM", itemData: ItemData(abbreviation: "Coffee", name: "Coffee", variations: [Variation(id: "#Cream", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "Cream", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 5, currency: "GBP")))]), id: "#Coffee"))
+        
+        let object2 = CatalogQueryModel(exactQuery: ExactQuery(attributeName: "name", attributeValue: "Coffee"))
+        
+        catalogAPICoordinator?.listCatalogItems(type: .item, completion: { result in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        })
     }
     
     func setUpView() {

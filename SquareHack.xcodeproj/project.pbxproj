@@ -26,6 +26,15 @@
 		806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C52A1D0E0800B45956 /* OrderItemModel.swift */; };
 		806956C92A1D0F9100B45956 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 806956C82A1D0F9100B45956 /* SDWebImage */; };
 		806956D12A2A042000B45956 /* FavouriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D02A2A042000B45956 /* FavouriteModel.swift */; };
+		806956D32A2A910200B45956 /* OrdersAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D22A2A910100B45956 /* OrdersAPICoordinator.swift */; };
+		806956D52A2A915400B45956 /* CatalogAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D42A2A915400B45956 /* CatalogAPICoordinator.swift */; };
+		806956D72A2A932B00B45956 /* HTTPMethodEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D62A2A932B00B45956 /* HTTPMethodEnum.swift */; };
+		806956D92A2A935C00B45956 /* APICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D82A2A935C00B45956 /* APICoordinator.swift */; };
+		806956DB2A2A9E5300B45956 /* CatalogObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956DA2A2A9E5300B45956 /* CatalogObjectModel.swift */; };
+		806956DD2A2AA74500B45956 /* APIErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956DC2A2AA74500B45956 /* APIErrorEnum.swift */; };
+		806956DF2A2AABD100B45956 /* CatalogQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956DE2A2AABD100B45956 /* CatalogQueryModel.swift */; };
+		806956E12A2AACA300B45956 /* CatalogSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956E02A2AACA300B45956 /* CatalogSearchModel.swift */; };
+		806956E32A2AB15500B45956 /* CatalogObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956E22A2AB15500B45956 /* CatalogObjectType.swift */; };
 		80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967D2A1B6A4100353DDD /* AppDelegate.swift */; };
 		80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */; };
 		80E796822A1B6A4100353DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796812A1B6A4100353DDD /* ViewController.swift */; };
@@ -76,6 +85,15 @@
 		806956C32A1D087100B45956 /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
 		806956C52A1D0E0800B45956 /* OrderItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemModel.swift; sourceTree = "<group>"; };
 		806956D02A2A042000B45956 /* FavouriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteModel.swift; sourceTree = "<group>"; };
+		806956D22A2A910100B45956 /* OrdersAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersAPICoordinator.swift; sourceTree = "<group>"; };
+		806956D42A2A915400B45956 /* CatalogAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogAPICoordinator.swift; sourceTree = "<group>"; };
+		806956D62A2A932B00B45956 /* HTTPMethodEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodEnum.swift; sourceTree = "<group>"; };
+		806956D82A2A935C00B45956 /* APICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICoordinator.swift; sourceTree = "<group>"; };
+		806956DA2A2A9E5300B45956 /* CatalogObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogObjectModel.swift; sourceTree = "<group>"; };
+		806956DC2A2AA74500B45956 /* APIErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorEnum.swift; sourceTree = "<group>"; };
+		806956DE2A2AABD100B45956 /* CatalogQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogQueryModel.swift; sourceTree = "<group>"; };
+		806956E02A2AACA300B45956 /* CatalogSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSearchModel.swift; sourceTree = "<group>"; };
+		806956E22A2AB15500B45956 /* CatalogObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogObjectType.swift; sourceTree = "<group>"; };
 		80E7967A2A1B6A4100353DDD /* SquareHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E7967D2A1B6A4100353DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +209,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		806956E42A2AB68600B45956 /* CatalogAPI */ = {
+			isa = PBXGroup;
+			children = (
+				806956D42A2A915400B45956 /* CatalogAPICoordinator.swift */,
+				806956E52A2AB6A000B45956 /* Model */,
+			);
+			path = CatalogAPI;
+			sourceTree = "<group>";
+		};
+		806956E52A2AB6A000B45956 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				806956DA2A2A9E5300B45956 /* CatalogObjectModel.swift */,
+				806956DE2A2AABD100B45956 /* CatalogQueryModel.swift */,
+				806956E02A2AACA300B45956 /* CatalogSearchModel.swift */,
+				806956E22A2AB15500B45956 /* CatalogObjectType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		80E796712A1B6A4100353DDD = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +293,11 @@
 				80E796962A1B6AFF00353DDD /* TerminalAPICoordinator.swift */,
 				80E796982A1B6B2200353DDD /* SubscriptionAPICoordinator.swift */,
 				80E7969C2A1B842100353DDD /* TestViewController.swift */,
+				806956D22A2A910100B45956 /* OrdersAPICoordinator.swift */,
+				806956E42A2AB68600B45956 /* CatalogAPI */,
+				806956D62A2A932B00B45956 /* HTTPMethodEnum.swift */,
+				806956DC2A2AA74500B45956 /* APIErrorEnum.swift */,
+				806956D82A2A935C00B45956 /* APICoordinator.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -416,8 +459,10 @@
 				806956B62A1CE72F00B45956 /* HomeViewModel.swift in Sources */,
 				80E7969D2A1B842100353DDD /* TestViewController.swift in Sources */,
 				DAEF120E2A257CEB0063A4FF /* SubscriptionViewController.swift in Sources */,
+				806956E12A2AACA300B45956 /* CatalogSearchModel.swift in Sources */,
 				80E796CD2A1CB7C400353DDD /* ChooseSorLViewController.swift in Sources */,
 				DA5AA1992A1DFEB900C36BC3 /* RewardCell.swift in Sources */,
+				806956E32A2AB15500B45956 /* CatalogObjectType.swift in Sources */,
 				80E796C42A1BF7E800353DDD /* ScanToPayViewController.swift in Sources */,
 				806956D12A2A042000B45956 /* FavouriteModel.swift in Sources */,
 				DAE57D9F2A1F5ACA00C78A8B /* ProgressView.swift in Sources */,
@@ -425,12 +470,15 @@
 				80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */,
 				806956B42A1CD01500B45956 /* SignUpViewModel.swift in Sources */,
 				DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */,
+				806956DB2A2A9E5300B45956 /* CatalogObjectModel.swift in Sources */,
+				806956D92A2A935C00B45956 /* APICoordinator.swift in Sources */,
 				806956B22A1CCF4D00B45956 /* AuthCoordinator.swift in Sources */,
 				80E796972A1B6AFF00353DDD /* TerminalAPICoordinator.swift in Sources */,
 				80E796C72A1BF84800353DDD /* TabBarController.swift in Sources */,
 				80E796822A1B6A4100353DDD /* ViewController.swift in Sources */,
 				80E796D22A1CBAF200353DDD /* UIColor+Ext.swift in Sources */,
 				80E796992A1B6B2200353DDD /* SubscriptionAPICoordinator.swift in Sources */,
+				806956DF2A2AABD100B45956 /* CatalogQueryModel.swift in Sources */,
 				80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */,
 				80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */,
 				DAEF12122A257E350063A4FF /* SettingsViewController.swift in Sources */,
@@ -446,9 +494,13 @@
 				DAD3900F2A1D341100ECF68F /* CountView.swift in Sources */,
 				DAEF120A2A25614B0063A4FF /* PayViewController.swift in Sources */,
 				80E796942A1B6ADC00353DDD /* HomeViewController.swift in Sources */,
+				806956D72A2A932B00B45956 /* HTTPMethodEnum.swift in Sources */,
+				806956D52A2A915400B45956 /* CatalogAPICoordinator.swift in Sources */,
 				DAE57D9D2A1F47DC00C78A8B /* FavouriteCell.swift in Sources */,
+				806956D32A2A910200B45956 /* OrdersAPICoordinator.swift in Sources */,
 				DAEF12102A257E1A0063A4FF /* ProfileViewController.swift in Sources */,
 				80E796CA2A1BF8DE00353DDD /* WalletViewController.swift in Sources */,
+				806956DD2A2AA74500B45956 /* APIErrorEnum.swift in Sources */,
 				806956C22A1CFE2700B45956 /* OrderHeaderModel.swift in Sources */,
 				806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */,
 				806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */,

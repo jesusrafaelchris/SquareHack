@@ -5,7 +5,6 @@ class ProgressView: UIView {
     func setRewardPoints(_ points: Int) {
         let modPoints = points % 500
         self.currentPoints = CGFloat(modPoints)
-        print(currentPoints)
         setNeedsDisplay()
     }
     
