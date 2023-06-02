@@ -1,10 +1,3 @@
-//
-//  SubscriptionViewController.swift
-//  SquareHack
-//
-//  Created by Artemiy Malyshau on 30/05/2023.
-//
-
 import UIKit
 
 class SubscriptionViewController: UIViewController {

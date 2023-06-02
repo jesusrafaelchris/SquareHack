@@ -1,10 +1,3 @@
-//
-//  RewardCell.swift
-//  SquareHack
-//
-//  Created by Artemiy Malyshau on 24/05/2023.
-//
-
 import UIKit
 
 class RewardCell: UICollectionViewCell {

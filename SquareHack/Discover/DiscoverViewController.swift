@@ -1,10 +1,3 @@
-//
-//  DiscoverViewController.swift
-//  SquareHack
-//
-//  Created by Artemiy Malyshau on 25/05/2023.
-//
-
 import UIKit
 import MapKit
 import CoreLocation

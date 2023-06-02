@@ -1,10 +1,3 @@
-//
-//  MapViewController.swift
-//  SquareHack
-//
-//  Created by Artemiy Malyshau on 27/05/2023.
-//
-
 import UIKit
 import MapKit
 

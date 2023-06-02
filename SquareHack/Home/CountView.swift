@@ -1,9 +1,3 @@
-//
-//  CountView.swift
-//  SquareHack
-//
-//  Created by Artemiy Malyshau on 23/05/2023.
-//
 import UIKit
 
 class CountView: UIView {
