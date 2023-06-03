@@ -17,4 +17,7 @@ class OrdersAPICoordinator: OrdersAPICoordinatorProtocol {
     
     // Create Order
     // https://developer.squareup.com/reference/square/orders-api/create-order
+    func createOrder() {
+        
+    }
 }

@@ -34,7 +34,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         
-        let home = HomeViewController(viewModel: HomeViewModel(), catalogAPICoordinator:CatalogAPICoordinator(apiCoordinator: APICoordinator()))
+        let home = HomeViewController(viewModel: HomeViewModel(), catalogAPICoordinator:CatalogAPICoordinator(apiCoordinator: APICoordinator()), customersAPICoordinator: CustomersAPICoordinator(apiCoordinator: APICoordinator()))
         let homeimage = UIImage(systemName: "safari")
         let homeselected = UIImage(systemName: "safari.fill")
         home.tabBarItem =  UITabBarItem(title: "Discover", image: homeimage, selectedImage: homeselected)

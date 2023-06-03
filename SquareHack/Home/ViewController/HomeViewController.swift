@@ -5,6 +5,7 @@ class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModelProtocol?
     var catalogAPICoordinator: CatalogAPICoordinatorProtocol?
+    var customersAPICoordinator: CustomersAPICoordinatorProtocol?
     
     var rewards: [Reward] = [
         Reward(image: "github", logo: "github", title: "Terry", type: "3 more purchases"),
@@ -82,9 +83,11 @@ class HomeViewController: UIViewController {
     }()
     
     init(viewModel: HomeViewModelProtocol,
-         catalogAPICoordinator: CatalogAPICoordinatorProtocol) {
+         catalogAPICoordinator: CatalogAPICoordinatorProtocol,
+         customersAPICoordinator: CustomersAPICoordinatorProtocol) {
         self.viewModel = viewModel
         self.catalogAPICoordinator = catalogAPICoordinator
+        self.customersAPICoordinator = customersAPICoordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -98,18 +101,36 @@ class HomeViewController: UIViewController {
         checkLoggedIn()
 //        let uuid = UUID()
 //        let uuidString = uuid.uuidString
-//        let object = CatalogObjectModel(idempotencyKey: uuidString, object: ItemObject(type: "ITEM", itemData: ItemData(abbreviation: "Coffee", name: "Coffee", variations: [Variation(id: "#Cream", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "Cream", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 5, currency: "GBP")))]), id: "#Coffee"))
+//        let object = CatalogObjectModel(idempotencyKey: uuidString, object: Object(type: "ITEM", itemData: ItemData(abbreviation: "Bread", name: "Bread", variations: [Variation(id: "#Bread", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "GlutenFree", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 10, currency: "GBP")))]), id: "#glutenfree"))
+//
+//        catalogAPICoordinator?.createItem(body: object, completion: { result in
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        })
         
-        let object2 = CatalogQueryModel(exactQuery: ExactQuery(attributeName: "name", attributeValue: "Coffee"))
-        
-        catalogAPICoordinator?.listCatalogItems(type: .item, completion: { result in
-            switch result {
-            case .success(let success):
-                print(success)
-            case .failure(let failure):
-                print(failure.localizedDescription)
-            }
-        })
+//        let object2 = CatalogQueryModel(exactQuery: ExactQuery(attributeName: "name", attributeValue: "Coffee"))
+//
+//        catalogAPICoordinator?.listCatalogItems(type: .item, completion: { result in
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        })
+//        let customer = CustomerModel(givenName: "Artemiy", familyName: "Malyshau", emailAddress: "amalyshau2002@gmail.com")
+//        customersAPICoordinator?.createCustomer(customerInfo: customer, completion: { result in
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        })
     }
     
     func setUpView() {

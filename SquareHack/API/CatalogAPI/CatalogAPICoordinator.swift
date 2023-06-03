@@ -24,15 +24,15 @@ class CatalogAPICoordinator: CatalogAPICoordinatorProtocol {
     // https://developer.squareup.com/explorer/square/catalog-api/upsert-catalog-object
     func createItem(body: CatalogObjectModel, completion: @escaping(Result<Bool,APIError>) -> Void) {
         if let apiCoordinator = apiCoordinator {
-            let url = URL(string: apiCoordinator.baseURL + Constants.upsertCatalog)
+            let url = URL(string: apiCoordinator.prodBaseURL + Constants.upsertCatalog)
             apiCoordinator.createRequest(url: url, type: .POST, body: body) { baseRequest in
                 if let baseRequest = baseRequest {
                     let task = URLSession.shared.dataTask(with: baseRequest) { data, response, error in
-                        guard let _ = data, error == nil else {
+                        guard let data = data, error == nil else {
                             completion(.failure(APIError.failedToGetData))
                             return
                         }
-
+                        apiCoordinator.printData(data: data)
                         guard let httpResponse = response as? HTTPURLResponse else {
                             completion(.failure(APIError.invalidResponse))
                             return
@@ -56,7 +56,7 @@ class CatalogAPICoordinator: CatalogAPICoordinatorProtocol {
     // https://developer.squareup.com/explorer/square/catalog-api/search-catalog-objects
     func searchCatalogItems(body: CatalogQueryModel, completion: @escaping(Result<CatalogSearchModel,APIError>) -> Void) {
         if let apiCoordinator = apiCoordinator {
-            let url = URL(string: apiCoordinator.baseURL + Constants.searchCatalog)
+            let url = URL(string: apiCoordinator.prodBaseURL + Constants.searchCatalog)
             apiCoordinator.createRequest(url: url, type: .POST, body: body) { baseRequest in
                 if let baseRequest = baseRequest {
                     let task = URLSession.shared.dataTask(with: baseRequest) { data, response, error in
@@ -94,7 +94,7 @@ class CatalogAPICoordinator: CatalogAPICoordinatorProtocol {
     func listCatalogItems(type: CatalogObjectType?, completion: @escaping(Result<CatalogSearchModel,APIError>) -> Void) {
         if let apiCoordinator = apiCoordinator {
             if let objectType = type {
-                let url = URL(string: apiCoordinator.baseURL + Constants.listCatalog + "?types=\(objectType.rawValue)")
+                let url = URL(string: apiCoordinator.prodBaseURL + Constants.listCatalog + "?types=\(objectType.rawValue)")
                 apiCoordinator.createRequest(url: url, type: .GET, body: nil as CatalogQueryModel?) { baseRequest in
                     if let baseRequest = baseRequest {
                         let task = URLSession.shared.dataTask(with: baseRequest) { data, response, error in
@@ -128,12 +128,5 @@ class CatalogAPICoordinator: CatalogAPICoordinatorProtocol {
                 completion(.failure(APIError.invalidObjectType))
             }
         }
-    }
-    
-    //MARK: Private Methods
-    
-    private func printData(data: Data) {
-        let responseString = String(data: data, encoding: .utf8)
-        print("Response: \(responseString ?? "")")
     }
 }

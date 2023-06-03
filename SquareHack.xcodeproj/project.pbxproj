@@ -35,6 +35,9 @@
 		806956DF2A2AABD100B45956 /* CatalogQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956DE2A2AABD100B45956 /* CatalogQueryModel.swift */; };
 		806956E12A2AACA300B45956 /* CatalogSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956E02A2AACA300B45956 /* CatalogSearchModel.swift */; };
 		806956E32A2AB15500B45956 /* CatalogObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956E22A2AB15500B45956 /* CatalogObjectType.swift */; };
+		806956E92A2AB7DB00B45956 /* CustomerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956E82A2AB7DB00B45956 /* CustomerAPI.swift */; };
+		806956ED2A2AB8D200B45956 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956EC2A2AB8D200B45956 /* CustomerModel.swift */; };
+		806956EF2A2AB94600B45956 /* CustomerResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956EE2A2AB94600B45956 /* CustomerResponseModel.swift */; };
 		80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967D2A1B6A4100353DDD /* AppDelegate.swift */; };
 		80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */; };
 		80E796822A1B6A4100353DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796812A1B6A4100353DDD /* ViewController.swift */; };
@@ -44,7 +47,6 @@
 		80E796942A1B6ADC00353DDD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796932A1B6ADC00353DDD /* HomeViewController.swift */; };
 		80E796972A1B6AFF00353DDD /* TerminalAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796962A1B6AFF00353DDD /* TerminalAPICoordinator.swift */; };
 		80E796992A1B6B2200353DDD /* SubscriptionAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796982A1B6B2200353DDD /* SubscriptionAPICoordinator.swift */; };
-		80E7969D2A1B842100353DDD /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7969C2A1B842100353DDD /* TestViewController.swift */; };
 		80E796C42A1BF7E800353DDD /* ScanToPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796C32A1BF7E800353DDD /* ScanToPayViewController.swift */; };
 		80E796C72A1BF84800353DDD /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796C62A1BF84800353DDD /* TabBarController.swift */; };
 		80E796CA2A1BF8DE00353DDD /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796C92A1BF8DE00353DDD /* WalletViewController.swift */; };
@@ -94,6 +96,9 @@
 		806956DE2A2AABD100B45956 /* CatalogQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogQueryModel.swift; sourceTree = "<group>"; };
 		806956E02A2AACA300B45956 /* CatalogSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSearchModel.swift; sourceTree = "<group>"; };
 		806956E22A2AB15500B45956 /* CatalogObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogObjectType.swift; sourceTree = "<group>"; };
+		806956E82A2AB7DB00B45956 /* CustomerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerAPI.swift; sourceTree = "<group>"; };
+		806956EC2A2AB8D200B45956 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
+		806956EE2A2AB94600B45956 /* CustomerResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerResponseModel.swift; sourceTree = "<group>"; };
 		80E7967A2A1B6A4100353DDD /* SquareHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E7967D2A1B6A4100353DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +110,6 @@
 		80E796932A1B6ADC00353DDD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		80E796962A1B6AFF00353DDD /* TerminalAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalAPICoordinator.swift; sourceTree = "<group>"; };
 		80E796982A1B6B2200353DDD /* SubscriptionAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAPICoordinator.swift; sourceTree = "<group>"; };
-		80E7969C2A1B842100353DDD /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		80E796C32A1BF7E800353DDD /* ScanToPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanToPayViewController.swift; sourceTree = "<group>"; };
 		80E796C62A1BF84800353DDD /* TabBarController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80E796C92A1BF8DE00353DDD /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +233,42 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		806956E62A2AB6ED00B45956 /* CoreAPI */ = {
+			isa = PBXGroup;
+			children = (
+				806956D62A2A932B00B45956 /* HTTPMethodEnum.swift */,
+				806956DC2A2AA74500B45956 /* APIErrorEnum.swift */,
+				806956D82A2A935C00B45956 /* APICoordinator.swift */,
+			);
+			path = CoreAPI;
+			sourceTree = "<group>";
+		};
+		806956E72A2AB6FB00B45956 /* OrdersAPI */ = {
+			isa = PBXGroup;
+			children = (
+				806956D22A2A910100B45956 /* OrdersAPICoordinator.swift */,
+			);
+			path = OrdersAPI;
+			sourceTree = "<group>";
+		};
+		806956EA2A2AB8BC00B45956 /* CustomersAPI */ = {
+			isa = PBXGroup;
+			children = (
+				806956E82A2AB7DB00B45956 /* CustomerAPI.swift */,
+				806956EB2A2AB8C500B45956 /* Model */,
+			);
+			path = CustomersAPI;
+			sourceTree = "<group>";
+		};
+		806956EB2A2AB8C500B45956 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				806956EC2A2AB8D200B45956 /* CustomerModel.swift */,
+				806956EE2A2AB94600B45956 /* CustomerResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		80E796712A1B6A4100353DDD = {
 			isa = PBXGroup;
 			children = (
@@ -292,12 +332,10 @@
 			children = (
 				80E796962A1B6AFF00353DDD /* TerminalAPICoordinator.swift */,
 				80E796982A1B6B2200353DDD /* SubscriptionAPICoordinator.swift */,
-				80E7969C2A1B842100353DDD /* TestViewController.swift */,
-				806956D22A2A910100B45956 /* OrdersAPICoordinator.swift */,
+				806956EA2A2AB8BC00B45956 /* CustomersAPI */,
+				806956E72A2AB6FB00B45956 /* OrdersAPI */,
 				806956E42A2AB68600B45956 /* CatalogAPI */,
-				806956D62A2A932B00B45956 /* HTTPMethodEnum.swift */,
-				806956DC2A2AA74500B45956 /* APIErrorEnum.swift */,
-				806956D82A2A935C00B45956 /* APICoordinator.swift */,
+				806956E62A2AB6ED00B45956 /* CoreAPI */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -457,7 +495,6 @@
 				DAE57DA62A20A90E00C78A8B /* RecommendedCell.swift in Sources */,
 				806956BA2A1CE86C00B45956 /* UserModel.swift in Sources */,
 				806956B62A1CE72F00B45956 /* HomeViewModel.swift in Sources */,
-				80E7969D2A1B842100353DDD /* TestViewController.swift in Sources */,
 				DAEF120E2A257CEB0063A4FF /* SubscriptionViewController.swift in Sources */,
 				806956E12A2AACA300B45956 /* CatalogSearchModel.swift in Sources */,
 				80E796CD2A1CB7C400353DDD /* ChooseSorLViewController.swift in Sources */,
@@ -469,9 +506,11 @@
 				806956BC2A1CFCF300B45956 /* OrderDetailsViewController.swift in Sources */,
 				80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */,
 				806956B42A1CD01500B45956 /* SignUpViewModel.swift in Sources */,
+				806956E92A2AB7DB00B45956 /* CustomerAPI.swift in Sources */,
 				DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */,
 				806956DB2A2A9E5300B45956 /* CatalogObjectModel.swift in Sources */,
 				806956D92A2A935C00B45956 /* APICoordinator.swift in Sources */,
+				806956EF2A2AB94600B45956 /* CustomerResponseModel.swift in Sources */,
 				806956B22A1CCF4D00B45956 /* AuthCoordinator.swift in Sources */,
 				80E796972A1B6AFF00353DDD /* TerminalAPICoordinator.swift in Sources */,
 				80E796C72A1BF84800353DDD /* TabBarController.swift in Sources */,
@@ -480,6 +519,7 @@
 				80E796992A1B6B2200353DDD /* SubscriptionAPICoordinator.swift in Sources */,
 				806956DF2A2AABD100B45956 /* CatalogQueryModel.swift in Sources */,
 				80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */,
+				806956ED2A2AB8D200B45956 /* CustomerModel.swift in Sources */,
 				80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */,
 				DAEF12122A257E350063A4FF /* SettingsViewController.swift in Sources */,
 				DAE57DAA2A22313E00C78A8B /* DiscoverViewModel.swift in Sources */,
