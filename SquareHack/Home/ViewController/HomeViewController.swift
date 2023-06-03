@@ -101,9 +101,9 @@ class HomeViewController: UIViewController {
         checkLoggedIn()
 //        let uuid = UUID()
 //        let uuidString = uuid.uuidString
-//        let object = CatalogObjectModel(idempotencyKey: uuidString, object: Object(type: "ITEM", itemData: ItemData(abbreviation: "Bread", name: "Bread", variations: [Variation(id: "#Bread", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "GlutenFree", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 10, currency: "GBP")))]), id: "#glutenfree"))
+//        let object = CatalogObjectModel(idempotencyKey: uuidString, object: Object(type: "ITEM", itemData: ItemData(abbreviation: "Pancakes", name: "Pancakes", variations: [Variation(id: "#Pancakes", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "Syrup", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 20, currency: "GBP")))]), id: "#Syrup"))
 //
-//        catalogAPICoordinator?.createItem(body: object, completion: { result in
+//        catalogAPICoordinator?.createItem(body: object, logLevel: .minimal, completion: { result in
 //            switch result {
 //            case .success(let success):
 //                print(success)
@@ -114,10 +114,11 @@ class HomeViewController: UIViewController {
         
 //        let object2 = CatalogQueryModel(exactQuery: ExactQuery(attributeName: "name", attributeValue: "Coffee"))
 //
-//        catalogAPICoordinator?.listCatalogItems(type: .item, completion: { result in
+//        catalogAPICoordinator?.listCatalogItems(type: .item, logLevel: .minimal, completion: { result in
 //            switch result {
 //            case .success(let success):
-//                print(success)
+//                //print(success)
+//                break
 //            case .failure(let failure):
 //                print(failure.localizedDescription)
 //            }
