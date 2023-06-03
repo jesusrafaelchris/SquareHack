@@ -38,6 +38,7 @@
 		806956E92A2AB7DB00B45956 /* CustomerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956E82A2AB7DB00B45956 /* CustomerAPI.swift */; };
 		806956ED2A2AB8D200B45956 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956EC2A2AB8D200B45956 /* CustomerModel.swift */; };
 		806956EF2A2AB94600B45956 /* CustomerResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956EE2A2AB94600B45956 /* CustomerResponseModel.swift */; };
+		806956F22A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956F12A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift */; };
 		80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967D2A1B6A4100353DDD /* AppDelegate.swift */; };
 		80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */; };
 		80E796822A1B6A4100353DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796812A1B6A4100353DDD /* ViewController.swift */; };
@@ -99,6 +100,7 @@
 		806956E82A2AB7DB00B45956 /* CustomerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerAPI.swift; sourceTree = "<group>"; };
 		806956EC2A2AB8D200B45956 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
 		806956EE2A2AB94600B45956 /* CustomerResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerResponseModel.swift; sourceTree = "<group>"; };
+		806956F12A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyAPICoordinator.swift; sourceTree = "<group>"; };
 		80E7967A2A1B6A4100353DDD /* SquareHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E7967D2A1B6A4100353DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -269,6 +271,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		806956F02A2AC0E800B45956 /* LoyaltyAPI */ = {
+			isa = PBXGroup;
+			children = (
+				806956F12A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift */,
+			);
+			path = LoyaltyAPI;
+			sourceTree = "<group>";
+		};
 		80E796712A1B6A4100353DDD = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +342,7 @@
 			children = (
 				80E796962A1B6AFF00353DDD /* TerminalAPICoordinator.swift */,
 				80E796982A1B6B2200353DDD /* SubscriptionAPICoordinator.swift */,
+				806956F02A2AC0E800B45956 /* LoyaltyAPI */,
 				806956EA2A2AB8BC00B45956 /* CustomersAPI */,
 				806956E72A2AB6FB00B45956 /* OrdersAPI */,
 				806956E42A2AB68600B45956 /* CatalogAPI */,
@@ -512,6 +523,7 @@
 				806956D92A2A935C00B45956 /* APICoordinator.swift in Sources */,
 				806956EF2A2AB94600B45956 /* CustomerResponseModel.swift in Sources */,
 				806956B22A1CCF4D00B45956 /* AuthCoordinator.swift in Sources */,
+				806956F22A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift in Sources */,
 				80E796972A1B6AFF00353DDD /* TerminalAPICoordinator.swift in Sources */,
 				80E796C72A1BF84800353DDD /* TabBarController.swift in Sources */,
 				80E796822A1B6A4100353DDD /* ViewController.swift in Sources */,
