@@ -142,7 +142,7 @@ class ShopWalletControllerViewModel {
     
     func uploadCustomerIDToFirebase(id: String) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        Firestore.firestore().collection("users").document(uid).setData(["customerID": id])
+        Firestore.firestore().collection("users").document(uid).setData(["customerID": id], merge: true)
     }
     
     func returnIdempotencyKey() -> String {
