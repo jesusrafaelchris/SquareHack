@@ -41,6 +41,11 @@
 		806956F22A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956F12A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift */; };
 		806956F42A2B492600B45956 /* CatalogResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956F32A2B492600B45956 /* CatalogResponseModel.swift */; };
 		806956F82A2B5AE600B45956 /* APIAccessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956F72A2B5AE600B45956 /* APIAccessType.swift */; };
+		806956FB2A2D260A00B45956 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956FA2A2D260A00B45956 /* CardCell.swift */; };
+		806956FD2A2D265A00B45956 /* HFCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956FC2A2D265A00B45956 /* HFCardCollectionViewCell.swift */; };
+		806956FF2A2D268F00B45956 /* HFCardCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956FE2A2D268F00B45956 /* HFCardCollectionViewLayout.swift */; };
+		806957012A2D26F700B45956 /* HFCardCollectionViewLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806957002A2D26F700B45956 /* HFCardCollectionViewLayoutDelegate.swift */; };
+		806957032A2D285400B45956 /* UIView+Ext2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806957022A2D285400B45956 /* UIView+Ext2.swift */; };
 		80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967D2A1B6A4100353DDD /* AppDelegate.swift */; };
 		80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */; };
 		80E796822A1B6A4100353DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796812A1B6A4100353DDD /* ViewController.swift */; };
@@ -105,6 +110,11 @@
 		806956F12A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyAPICoordinator.swift; sourceTree = "<group>"; };
 		806956F32A2B492600B45956 /* CatalogResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResponseModel.swift; sourceTree = "<group>"; };
 		806956F72A2B5AE600B45956 /* APIAccessType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAccessType.swift; sourceTree = "<group>"; };
+		806956FA2A2D260A00B45956 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		806956FC2A2D265A00B45956 /* HFCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		806956FE2A2D268F00B45956 /* HFCardCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFCardCollectionViewLayout.swift; sourceTree = "<group>"; };
+		806957002A2D26F700B45956 /* HFCardCollectionViewLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFCardCollectionViewLayoutDelegate.swift; sourceTree = "<group>"; };
+		806957022A2D285400B45956 /* UIView+Ext2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext2.swift"; sourceTree = "<group>"; };
 		80E7967A2A1B6A4100353DDD /* SquareHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E7967D2A1B6A4100353DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +295,25 @@
 			path = LoyaltyAPI;
 			sourceTree = "<group>";
 		};
+		806956F92A2BE5AE00B45956 /* SubscriptionAPI */ = {
+			isa = PBXGroup;
+			children = (
+				80E796982A1B6B2200353DDD /* SubscriptionAPICoordinator.swift */,
+			);
+			path = SubscriptionAPI;
+			sourceTree = "<group>";
+		};
+		806957042A2D2B4200B45956 /* CV Card Logic */ = {
+			isa = PBXGroup;
+			children = (
+				806956FC2A2D265A00B45956 /* HFCardCollectionViewCell.swift */,
+				806956FE2A2D268F00B45956 /* HFCardCollectionViewLayout.swift */,
+				806957002A2D26F700B45956 /* HFCardCollectionViewLayoutDelegate.swift */,
+				806957022A2D285400B45956 /* UIView+Ext2.swift */,
+			);
+			path = "CV Card Logic";
+			sourceTree = "<group>";
+		};
 		80E796712A1B6A4100353DDD = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				80E796962A1B6AFF00353DDD /* TerminalAPICoordinator.swift */,
-				80E796982A1B6B2200353DDD /* SubscriptionAPICoordinator.swift */,
+				806956F92A2BE5AE00B45956 /* SubscriptionAPI */,
 				806956F02A2AC0E800B45956 /* LoyaltyAPI */,
 				806956EA2A2AB8BC00B45956 /* CustomersAPI */,
 				806956E72A2AB6FB00B45956 /* OrdersAPI */,
@@ -383,6 +412,8 @@
 			isa = PBXGroup;
 			children = (
 				80E796C92A1BF8DE00353DDD /* WalletViewController.swift */,
+				806956FA2A2D260A00B45956 /* CardCell.swift */,
+				806957042A2D2B4200B45956 /* CV Card Logic */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -531,11 +562,13 @@
 				806956D92A2A935C00B45956 /* APICoordinator.swift in Sources */,
 				806956EF2A2AB94600B45956 /* CustomerResponseModel.swift in Sources */,
 				806956B22A1CCF4D00B45956 /* AuthCoordinator.swift in Sources */,
+				806956FF2A2D268F00B45956 /* HFCardCollectionViewLayout.swift in Sources */,
 				806956F22A2AC0FA00B45956 /* LoyaltyAPICoordinator.swift in Sources */,
 				80E796972A1B6AFF00353DDD /* TerminalAPICoordinator.swift in Sources */,
 				80E796C72A1BF84800353DDD /* TabBarController.swift in Sources */,
 				80E796822A1B6A4100353DDD /* ViewController.swift in Sources */,
 				80E796D22A1CBAF200353DDD /* UIColor+Ext.swift in Sources */,
+				806957012A2D26F700B45956 /* HFCardCollectionViewLayoutDelegate.swift in Sources */,
 				80E796992A1B6B2200353DDD /* SubscriptionAPICoordinator.swift in Sources */,
 				806956DF2A2AABD100B45956 /* CatalogQueryModel.swift in Sources */,
 				80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */,
@@ -561,9 +594,12 @@
 				DAEF12102A257E1A0063A4FF /* ProfileViewController.swift in Sources */,
 				80E796CA2A1BF8DE00353DDD /* WalletViewController.swift in Sources */,
 				806956DD2A2AA74500B45956 /* APIErrorEnum.swift in Sources */,
+				806956FD2A2D265A00B45956 /* HFCardCollectionViewCell.swift in Sources */,
+				806957032A2D285400B45956 /* UIView+Ext2.swift in Sources */,
 				806956C22A1CFE2700B45956 /* OrderHeaderModel.swift in Sources */,
 				806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */,
 				806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */,
+				806956FB2A2D260A00B45956 /* CardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

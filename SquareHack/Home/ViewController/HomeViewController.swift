@@ -101,9 +101,9 @@ class HomeViewController: UIViewController {
         checkLoggedIn()
 //        let uuid = UUID()
 //        let uuidString = uuid.uuidString
-//        let object = CatalogObjectModel(idempotencyKey: uuidString, object: Object(type: "ITEM", itemData: ItemData(abbreviation: "Pancakes", name: "Pancakes", variations: [Variation(id: "#Pancakes", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "Syrup", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 20, currency: "GBP")))]), id: "#Syrup"))
+//        let object = CatalogObjectModel(idempotencyKey: uuidString, object: Object(type: "ITEM", itemData: ItemData(abbreviation: "Coke", name: "Coke", variations: [Variation(id: "#Zero", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "Zero", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 1000, currency: "GBP")))]), id: "#Coke"))
 //
-//        catalogAPICoordinator?.createItem(body: object, logLevel: .minimal, completion: { result in
+//        catalogAPICoordinator?.createItem(body: object, logLevel: .debug, completion: { result in
 //            switch result {
 //            case .success(let success):
 //                print(success)
@@ -117,7 +117,7 @@ class HomeViewController: UIViewController {
 //        catalogAPICoordinator?.listCatalogItems(type: .item, logLevel: .minimal, completion: { result in
 //            switch result {
 //            case .success(let success):
-//                //print(success)
+//                print(success)
 //                break
 //            case .failure(let failure):
 //                print(failure.localizedDescription)

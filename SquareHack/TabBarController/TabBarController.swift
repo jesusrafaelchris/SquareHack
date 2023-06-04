@@ -44,7 +44,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let discoverselected = UIImage(systemName: "bag.fill")
         discover.tabBarItem =  UITabBarItem(title: "Browse", image: discoverimage, selectedImage: discoverselected)
         
-        let wallet = SuccessPayViewController()
+        let wallet = WalletViewController()
         let walletImage = UIImage(systemName: "wallet.pass")
         let walletselected = UIImage(systemName: "wallet.pass.fill")
         wallet.tabBarItem = UITabBarItem(title: "Wallet", image: walletImage, selectedImage: walletselected)
