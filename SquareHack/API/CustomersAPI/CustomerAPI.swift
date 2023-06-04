@@ -1,7 +1,7 @@
 import UIKit
 
 protocol CustomersAPICoordinatorProtocol {
-    func createCustomer(customerInfo: CustomerModel, completion: @escaping (Result<CustomerReponseModel, APIError>?) -> Void)
+    func createCustomer(customerInfo: CustomerModel, logLevel: APILogLevel,completion: @escaping (Result<CustomerReponseModel, APIError>?) -> Void)
 }
 
 class CustomersAPICoordinator: CustomersAPICoordinatorProtocol {
@@ -18,15 +18,11 @@ class CustomersAPICoordinator: CustomersAPICoordinatorProtocol {
 
     // Create Customer
     //https://developer.squareup.com/reference/square/customers-api/create-customer
-    func createCustomer(customerInfo: CustomerModel, completion: @escaping (Result<CustomerReponseModel, APIError>?) -> Void) {
-//        if let apiCoordinator = apiCoordinator {
-//            let url = URL(string: apiCoordinator.prodBaseURL + Constants.createCustomer)
-//
-//            apiCoordinator.fetchAPI(url: url, type: .POST, body: customerInfo) { (result: ResultWrapper<CustomerReponseModel>?) in
-//                completion(result)
-//            }
-//        } else {
-//            completion(nil)
-//        }
+    func createCustomer(customerInfo: CustomerModel, logLevel: APILogLevel,completion: @escaping (Result<CustomerReponseModel, APIError>?) -> Void) {
+        if let apiCoordinator = apiCoordinator {
+            apiCoordinator.fetchAPI(url: Constants.createCustomer, type: .POST, body: customerInfo, logLevel: logLevel, access: .production) { response in
+                apiCoordinator.handleAPIResponse(response, completion: completion)
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ protocol CatalogAPICoordinatorProtocol {
     func createItem(body: CatalogObjectModel, logLevel: APILogLevel, completion: @escaping(Result<CatalogResponseModel,APIError>) -> Void)
     func searchCatalogItems(body: CatalogQueryModel, logLevel: APILogLevel, completion: @escaping(Result<CatalogSearchModel,APIError>) -> Void)
     func listCatalogItems(type: CatalogObjectType?, logLevel: APILogLevel, completion: @escaping(Result<CatalogSearchModel,APIError>) -> Void)
+    func createSubscription(body: SubscriptionPlanModel, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void)
 }
 
 class CatalogAPICoordinator: CatalogAPICoordinatorProtocol {
@@ -23,6 +24,14 @@ class CatalogAPICoordinator: CatalogAPICoordinatorProtocol {
     // Upsert Catalog Object
     // https://developer.squareup.com/explorer/square/catalog-api/upsert-catalog-object
     func createItem(body: CatalogObjectModel, logLevel: APILogLevel, completion: @escaping(Result<CatalogResponseModel,APIError>) -> Void) {
+        if let apiCoordinator = apiCoordinator {
+            apiCoordinator.fetchAPI(url: Constants.upsertCatalog, type: .POST, body: body, logLevel: logLevel, access: .production) { response in
+                apiCoordinator.handleAPIResponse(response, completion: completion)
+            }
+        }
+    }
+    
+    func createSubscription(body: SubscriptionPlanModel, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void) {
         if let apiCoordinator = apiCoordinator {
             apiCoordinator.fetchAPI(url: Constants.upsertCatalog, type: .POST, body: body, logLevel: logLevel, access: .production) { response in
                 apiCoordinator.handleAPIResponse(response, completion: completion)
