@@ -74,21 +74,27 @@ extension WalletViewController: UICollectionViewDelegate,UICollectionViewDataSou
         switch indexPath.row {
         case 0 :
             cell.backgroundColor = UIColor.fromHex(hexString: "E6E5D9")
+            cell.cardLabel.text = "McDonalds" // Set label text here
             break
         case 1 :
             cell.backgroundColor = UIColor.fromHex(hexString: "ECEBA2")
+            cell.cardLabel.text = "Eat Tokyo" // Set label text here
             break
         case 2 :
             cell.backgroundColor = UIColor.fromHex(hexString: "9FCABA")
+            cell.cardLabel.text = "Five Guys" // Set label text here
             break
         case 3 :
             cell.backgroundColor = UIColor.fromHex(hexString: "DFDFF8")
+            cell.cardLabel.text = "Pret" // Set label text here
             break
         default:
             cell.backgroundColor = UIColor.fromHex(hexString: "E6E5D9")
+            cell.cardLabel.text = "Gordon Ramsay's Street Burger" // Set default label text here
         }
         return cell
     }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.cardCollectionViewLayout?.revealedIndex == indexPath.item {
