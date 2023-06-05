@@ -2,29 +2,55 @@ import UIKit
 
 class CardCell: HFCardCollectionViewCell {
     
+    
+    // logo text - 688 (w) x 88(l)
+    // logo image - 1132 (w) × 1056 (h)
+    //------------------------
+    //- Change the name on card to the users name
+    
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     
-    var cardLabel: UILabel = {
+    var qrImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "qr")
+        return imageView
+    }()
+    
+    var topLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.textColor = .white
         label.numberOfLines = 0
         return label
     }()
     
-    var blackBar: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
-        return view
+    var bottomRightLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        label.textColor = .white
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    var cardLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .white
+        label.numberOfLines = 0
+        return label
     }()
     
     var simImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "sim")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -32,7 +58,6 @@ class CardCell: HFCardCollectionViewCell {
     var squareImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "square")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -50,30 +75,52 @@ class CardCell: HFCardCollectionViewCell {
         layer.cornerRadius = 16
         layer.masksToBounds = true
 
-        // Add the black bar, label, and image views to the cell's contentView
-        contentView.addSubview(blackBar)
         contentView.addSubview(simImageView)
         contentView.addSubview(squareImageView)
-        contentView.addSubview(cardLabel) // Add cardLabel after blackBar
+        contentView.addSubview(cardLabel)
+        contentView.addSubview(topLabel)
+        contentView.addSubview(bottomRightLabel)
+        contentView.addSubview(qrImageView)
 
         NSLayoutConstraint.activate([
-            blackBar.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            blackBar.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            blackBar.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            blackBar.heightAnchor.constraint(equalToConstant: 60),
             
-            cardLabel.bottomAnchor.constraint(equalTo: blackBar.bottomAnchor, constant: -10), // Anchor to the bottom of the blackBar
-            cardLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            //membership number
+            cardLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            cardLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             
-            simImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            simImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-            simImageView.widthAnchor.constraint(equalToConstant: 60), // Adjusted size
-            simImageView.heightAnchor.constraint(equalToConstant: 60), // Adjusted size
+            //qr code
+            qrImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            qrImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
+            qrImageView.widthAnchor.constraint(equalToConstant: 100),
+            qrImageView.heightAnchor.constraint(equalToConstant: 100),
             
-            squareImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            squareImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-            squareImageView.widthAnchor.constraint(equalToConstant: 60), // Adjusted size
-            squareImageView.heightAnchor.constraint(equalToConstant: 60), // Adjusted size
+            //text logo
+            simImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -10),
+            simImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
+            simImageView.widthAnchor.constraint(equalToConstant: 120),
+            simImageView.heightAnchor.constraint(equalToConstant: 120),
+            
+            //logo
+            squareImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            squareImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            squareImageView.widthAnchor.constraint(equalToConstant: 60),
+            squareImageView.heightAnchor.constraint(equalToConstant: 60),
+
+            //name
+            topLabel.bottomAnchor.constraint(equalTo: cardLabel.topAnchor, constant: -5),
+            topLabel.leftAnchor.constraint(equalTo: cardLabel.leftAnchor),
+            
+            // points
+            bottomRightLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            bottomRightLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
         ])
+    }
+    
+    func setImage(name: String) {
+        self.simImageView.image = UIImage(named: name)
+    }
+    
+    func setSquareImage(name: String) {
+        self.squareImageView.image = UIImage(named: name)
     }
 }
