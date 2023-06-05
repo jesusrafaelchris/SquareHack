@@ -16,6 +16,7 @@ class ShopWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        subscribeToShop(shopName: "McD", cost: 500)
     }
     
     func setupView() {

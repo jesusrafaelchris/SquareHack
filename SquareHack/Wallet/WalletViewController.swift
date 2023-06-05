@@ -94,6 +94,9 @@ extension WalletViewController: UICollectionViewDelegate,UICollectionViewDataSou
         if self.cardCollectionViewLayout?.revealedIndex == indexPath.item {
             self.cardCollectionViewLayout?.unrevealRevealedCardAction()
             // go to main view
+            let api = APICoordinator()
+            let vc = ShopWalletViewController(viewModel: ShopWalletControllerViewModel(catalogAPICoordinator: CatalogAPICoordinator(apiCoordinator: api), customersAPICoordinator: CustomersAPICoordinator(apiCoordinator: api), subscriptionAPICoordinator: SubscriptionAPICoordinator(apiCoordinator: api)))
+            navigationController?.pushViewController(vc, animated: true)
         } else {
             self.cardCollectionViewLayout?.revealCardAt(index: indexPath.item)
         }

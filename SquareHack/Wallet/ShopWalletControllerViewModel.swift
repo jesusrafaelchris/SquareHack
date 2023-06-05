@@ -10,7 +10,7 @@ protocol ShopWalletControllerViewModelProcotol {
     func getCustomerID(completion: @escaping(String) -> Void)
 }
 
-class ShopWalletControllerViewModel {
+class ShopWalletControllerViewModel: ShopWalletControllerViewModelProcotol {
     
     var catalogAPICoordinator: CatalogAPICoordinatorProtocol?
     var customersAPICoordinator: CustomersAPICoordinatorProtocol?
