@@ -9,12 +9,6 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
     
     var recommends: [Recommended] = []
     
-    lazy var searchBar: CustomSearchBar = {
-        let searchBar = CustomSearchBar()
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        return searchBar
-    }()
-    
     lazy var miniMapView: MKMapView = {
         let mapView = MKMapView()
         mapView.layer.cornerRadius = 22
@@ -159,7 +153,6 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
     }
 
     override func viewDidLoad() {
-        navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         locationManager.delegate = self
         
@@ -237,7 +230,8 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
     }
     
     func setUpView() {
-        view.addSubview(searchBar)
+        self.title = "Browse"
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(areaLabel)
         view.addSubview(mapMoreButton)
         view.addSubview(miniMapView)
@@ -248,11 +242,9 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
         view.addSubview(newMoreButton)
         view.addSubview(newCollectionView)
         
-        searchBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 50)
+        areaLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 12, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
-        areaLabel.anchor(top: searchBar.bottomAnchor, paddingTop: 32, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
-        
-        mapMoreButton.anchor(top: searchBar.bottomAnchor, paddingTop: 28, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        mapMoreButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
         
         miniMapView.anchor(top: areaLabel.bottomAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 165)
         

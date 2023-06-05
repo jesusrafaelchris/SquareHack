@@ -9,14 +9,6 @@ import UIKit
 
 class PayViewController: UIViewController {
     
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.text = "Pay"
-        return label
-    }()
-    
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
@@ -53,7 +45,6 @@ class PayViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         setUpView()
         view.backgroundColor = .white
@@ -61,13 +52,12 @@ class PayViewController: UIViewController {
     }
     
     func setUpView() {
-        view.addSubview(titleLabel)
+        self.title = "Pay"
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(descriptionLabel)
         view.addSubview(scannerButton)
         
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 18, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
-        
-        descriptionLabel.anchor(top: titleLabel.bottomAnchor, paddingTop: 22, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        descriptionLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 24, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
         
         scannerButton.anchor(top: descriptionLabel.bottomAnchor, paddingTop: 68, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 140, height: 54)
         scannerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
