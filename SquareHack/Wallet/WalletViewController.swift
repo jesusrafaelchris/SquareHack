@@ -73,24 +73,38 @@ extension WalletViewController: UICollectionViewDelegate,UICollectionViewDataSou
         let cell = self.cardCollectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
         switch indexPath.row {
         case 0 :
-            cell.backgroundColor = UIColor.fromHex(hexString: "E6E5D9")
-            cell.cardLabel.text = "McDonalds" // Set label text here
+            cell.backgroundColor = UIColor.fromHex(hexString: "#DB0009")
+            cell.cardLabel.text = "Membership Number: 0912345678999"
+            cell.topLabel.text = "Christian Grinling"
+            cell.bottomRightLabel.text = "3,482"
+            cell.setImage(name: "mcdonalds_text")
+            cell.setSquareImage(name: "mcdonalds")
             break
         case 1 :
-            cell.backgroundColor = UIColor.fromHex(hexString: "ECEBA2")
-            cell.cardLabel.text = "Eat Tokyo" // Set label text here
+            cell.backgroundColor = UIColor.fromHex(hexString: "#910027")
+            cell.cardLabel.text = "Memebership Number: 0912345678888"
+            cell.topLabel.text = "Christian Grinling"
+            cell.bottomRightLabel.text = "182"
+            cell.setImage(name: "pret_text")
+            cell.setSquareImage(name: "pret")
             break
         case 2 :
             cell.backgroundColor = UIColor.fromHex(hexString: "9FCABA")
-            cell.cardLabel.text = "Five Guys" // Set label text here
+            cell.cardLabel.text = "Memebership Number: 0912345678777"
+            cell.topLabel.text = "Christian Grinling"
+            cell.bottomRightLabel.text = "437"
             break
         case 3 :
             cell.backgroundColor = UIColor.fromHex(hexString: "DFDFF8")
-            cell.cardLabel.text = "Pret" // Set label text here
+            cell.cardLabel.text = "Memebership Number: 0912345678666"
+            cell.topLabel.text = "Christian Grinling"
+            cell.bottomRightLabel.text = "2,118"
             break
         default:
             cell.backgroundColor = UIColor.fromHex(hexString: "E6E5D9")
-            cell.cardLabel.text = "Gordon Ramsay's Street Burger" // Set default label text here
+            cell.cardLabel.text = "Memebership Number: 0912345678555"
+            cell.topLabel.text = "Christian Grinling"
+            cell.bottomRightLabel.text = "1,232"
         }
         return cell
     }
