@@ -3,6 +3,10 @@ import UIKit
 class ShopWalletViewController: UIViewController {
     
     var viewModel: ShopWalletControllerViewModelProcotol?
+    var shop: String = "Pret A Manger"
+    var pretColour = UIColor(red: 0.57, green: 0.00, blue: 0.15, alpha: 1.00)
+    
+    lazy var ticketStubView = TicketStubView()
     
     init(viewModel: ShopWalletControllerViewModelProcotol) {
         self.viewModel = viewModel
@@ -16,10 +20,36 @@ class ShopWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        subscribeToShop(shopName: "McD", cost: 500)
+        setupNavBar()
+        //subscribeToShop(shopName: "McD", cost: 500)
+    }
+    
+    func setupNavBar() {
+        self.title = shop
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.black).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(backToPreviousView))
+        
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill")?.withTintColor(pretColour).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(heartShop))
+    }
+    
+    @objc func backToPreviousView() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func heartShop() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setupView() {
+        view.backgroundColor = .white
+        view.addSubview(ticketStubView)
+        
+        ticketStubView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 12,
+                              bottom: nil, paddingBottom: 0,
+                              left: view.leftAnchor, paddingLeft: 16,
+                              right: view.rightAnchor, paddingRight: 16,
+                              width: 0, height: 150)
         
     }
     //MARK: Subscription API
