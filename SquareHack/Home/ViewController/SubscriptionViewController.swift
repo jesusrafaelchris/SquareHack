@@ -15,10 +15,10 @@ class SubscriptionViewController: UIViewController {
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .black
         button.backgroundColor = .white
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 15
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: 1)
-        button.layer.shadowRadius = 2
+        button.layer.shadowRadius = 1
         button.layer.shadowOpacity = 0.3
         button.addTarget(self, action: #selector(handleBackTap), for: .touchUpInside)
         return button
@@ -49,7 +49,7 @@ class SubscriptionViewController: UIViewController {
         
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 40, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
-        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 16, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 40, height: 40)
+        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 16, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 16, width: 30, height: 30)
     }
     
 }
