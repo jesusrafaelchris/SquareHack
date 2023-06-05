@@ -4,6 +4,12 @@ class WalletViewController: UIViewController {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     
+    var cards: [CardModel] = [
+        CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: 0912345678999", topLabel: "Christian Grinling", bottomRightLabel: "3,482", setImage: "mcdonalds_text", setSquareImage: "mcdonalds"),
+        CardModel(backgroundColor: "#910027", cardLabel: "Membership Number: 0912345678999", topLabel: "Christian Grinling", bottomRightLabel: "182", setImage: "pret_text", setSquareImage: "pret"),
+        CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: e5454", topLabel: "Jeevan Jutla", bottomRightLabel: "182", setImage: "pret_text", setSquareImage: "pret"),
+    ]
+    
     lazy var cardCollectionView: UICollectionView = {
         let flowlayout: UICollectionViewLayout = HFCardCollectionViewLayout()
         let collectionview = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
@@ -66,46 +72,13 @@ class WalletViewController: UIViewController {
 extension WalletViewController: UICollectionViewDelegate,UICollectionViewDataSource, HFCardCollectionViewLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return cards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.cardCollectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
-        switch indexPath.row {
-        case 0 :
-            cell.backgroundColor = UIColor.fromHex(hexString: "#DB0009")
-            cell.cardLabel.text = "Membership Number: 0912345678999"
-            cell.topLabel.text = "Christian Grinling"
-            cell.bottomRightLabel.text = "3,482"
-            cell.setImage(name: "mcdonalds_text")
-            cell.setSquareImage(name: "mcdonalds")
-            break
-        case 1 :
-            cell.backgroundColor = UIColor.fromHex(hexString: "#910027")
-            cell.cardLabel.text = "Memebership Number: 0912345678888"
-            cell.topLabel.text = "Christian Grinling"
-            cell.bottomRightLabel.text = "182"
-            cell.setImage(name: "pret_text")
-            cell.setSquareImage(name: "pret")
-            break
-        case 2 :
-            cell.backgroundColor = UIColor.fromHex(hexString: "9FCABA")
-            cell.cardLabel.text = "Memebership Number: 0912345678777"
-            cell.topLabel.text = "Christian Grinling"
-            cell.bottomRightLabel.text = "437"
-            break
-        case 3 :
-            cell.backgroundColor = UIColor.fromHex(hexString: "DFDFF8")
-            cell.cardLabel.text = "Memebership Number: 0912345678666"
-            cell.topLabel.text = "Christian Grinling"
-            cell.bottomRightLabel.text = "2,118"
-            break
-        default:
-            cell.backgroundColor = UIColor.fromHex(hexString: "E6E5D9")
-            cell.cardLabel.text = "Memebership Number: 0912345678555"
-            cell.topLabel.text = "Christian Grinling"
-            cell.bottomRightLabel.text = "1,232"
-        }
+        let card = cards[indexPath.item]
+        cell.configure(model: card)
         return cell
     }
 

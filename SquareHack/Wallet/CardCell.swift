@@ -116,11 +116,20 @@ class CardCell: HFCardCollectionViewCell {
         ])
     }
     
-    func setImage(name: String) {
+    func configure(model: CardModel) {
+        backgroundColor = UIColor.fromHex(hexString: model.backgroundColor)
+        cardLabel.text = model.cardLabel
+        topLabel.text = model.topLabel
+        bottomRightLabel.text = model.bottomRightLabel
+        setImage(name: model.setImage)
+        setSquareImage(name: model.setSquareImage)
+    }
+    
+    private func setImage(name: String) {
         self.simImageView.image = UIImage(named: name)
     }
     
-    func setSquareImage(name: String) {
+    private func setSquareImage(name: String) {
         self.squareImageView.image = UIImage(named: name)
     }
 }

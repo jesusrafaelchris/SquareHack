@@ -54,6 +54,7 @@
 		806957122A2D3BC800B45956 /* SubscriptionAssignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806957112A2D3BC800B45956 /* SubscriptionAssignModel.swift */; };
 		806957142A2D3CDE00B45956 /* CreateSubscriptionResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806957132A2D3CDE00B45956 /* CreateSubscriptionResponseModel.swift */; };
 		806957162A2E08CF00B45956 /* TicketStubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806957152A2E08CF00B45956 /* TicketStubView.swift */; };
+		806957182A2E418800B45956 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806957172A2E418800B45956 /* CardModel.swift */; };
 		80E7967E2A1B6A4100353DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967D2A1B6A4100353DDD /* AppDelegate.swift */; };
 		80E796802A1B6A4100353DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */; };
 		80E796822A1B6A4100353DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796812A1B6A4100353DDD /* ViewController.swift */; };
@@ -131,6 +132,7 @@
 		806957112A2D3BC800B45956 /* SubscriptionAssignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAssignModel.swift; sourceTree = "<group>"; };
 		806957132A2D3CDE00B45956 /* CreateSubscriptionResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubscriptionResponseModel.swift; sourceTree = "<group>"; };
 		806957152A2E08CF00B45956 /* TicketStubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStubView.swift; sourceTree = "<group>"; };
+		806957172A2E418800B45956 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		80E7967A2A1B6A4100353DDD /* SquareHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E7967D2A1B6A4100353DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E7967F2A1B6A4100353DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				80E796C92A1BF8DE00353DDD /* WalletViewController.swift */,
+				806957172A2E418800B45956 /* CardModel.swift */,
 				806957052A2D2D6B00B45956 /* ShopWalletViewController.swift */,
 				806957152A2E08CF00B45956 /* TicketStubView.swift */,
 				806957072A2D2F7B00B45956 /* ShopWalletControllerViewModel.swift */,
@@ -584,6 +587,7 @@
 				806956F42A2B492600B45956 /* CatalogResponseModel.swift in Sources */,
 				806956E92A2AB7DB00B45956 /* CustomerAPI.swift in Sources */,
 				DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */,
+				806957182A2E418800B45956 /* CardModel.swift in Sources */,
 				806956DB2A2A9E5300B45956 /* CatalogObjectModel.swift in Sources */,
 				806956D92A2A935C00B45956 /* APICoordinator.swift in Sources */,
 				806956EF2A2AB94600B45956 /* CustomerResponseModel.swift in Sources */,
