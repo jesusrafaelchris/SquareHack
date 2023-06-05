@@ -24,6 +24,15 @@ class HomeViewController: UIViewController {
     
     lazy var countView = CountView()
     
+    lazy var giftLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.text = "450 Points to\nSilver Level"
+        label.numberOfLines = 2
+        return label
+    }()
+    
     lazy var rewardLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -146,7 +155,7 @@ class HomeViewController: UIViewController {
         view.addSubview(favouriteMoreButton)
         view.addSubview(favouriteCollectionView)
 
-        topBarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 32)
+        topBarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 16, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 32)
 
         countView.anchor(top: topBarView.bottomAnchor, paddingTop: 44, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 64)
         

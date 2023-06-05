@@ -6,7 +6,7 @@ class CountView: UIView {
         let text = UILabel()
         text.textColor = .redColour
         text.font = UIFont.boldSystemFont(ofSize: 8)
-        text.text = "REWARD POINTS"
+        text.text = "TOTAL REWARD POINTS"
         return text
     }()
     
