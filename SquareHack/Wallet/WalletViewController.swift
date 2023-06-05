@@ -5,9 +5,19 @@ class WalletViewController: UIViewController {
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     
     var cards: [CardModel] = [
+        
+        
         CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: 0912345678999", topLabel: "Christian Grinling", bottomRightLabel: "3,482", setImage: "mcdonalds_text", setSquareImage: "mcdonalds"),
-        CardModel(backgroundColor: "#910027", cardLabel: "Membership Number: 0912345678999", topLabel: "Christian Grinling", bottomRightLabel: "182", setImage: "pret_text", setSquareImage: "pret"),
-        CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: e5454", topLabel: "Jeevan Jutla", bottomRightLabel: "182", setImage: "pret_text", setSquareImage: "pret"),
+        
+        CardModel(backgroundColor: "#ffcf01", cardLabel: "Membership Number: 0912345678444", topLabel: "Christian Grinling", bottomRightLabel: "1,211", setImage: "music_text", setSquareImage: "music"),
+        
+        CardModel(backgroundColor: "#910027", cardLabel: "Membership Number: 0912345678888", topLabel: "Christian Grinling", bottomRightLabel: "182", setImage: "pret_text", setSquareImage: "pret"),
+        
+        CardModel(backgroundColor: "#f82494", cardLabel: "Membership Number: 0912345678666", topLabel: "Christian Grinling", bottomRightLabel: "991", setImage: "superdrug_text", setSquareImage: "superdrug"),
+        
+        CardModel(backgroundColor: "#173302", cardLabel: "Membership Number: 0912345678555", topLabel: "Christian Grinling", bottomRightLabel: "1,611", setImage: "barber_text", setSquareImage: "barber"),
+        
+        CardModel(backgroundColor: "#086494", cardLabel: "Membership Number: 0912345678777", topLabel: "Christian Grinling", bottomRightLabel: "1,511", setImage: "dominos_text", setSquareImage: "dominos"),
     ]
     
     lazy var cardCollectionView: UICollectionView = {
