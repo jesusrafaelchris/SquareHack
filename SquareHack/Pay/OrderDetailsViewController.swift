@@ -2,11 +2,9 @@ import UIKit
 
 class OrderDetailsViewController: UIViewController {
     
-    var scannedCode: String?
-    
     var orderItems = [
-        OrderItemModel(amount: "1", itemImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/1200px-Hamburger_%28black_bg%29.jpg", itemTitle: "Double Cheeseburger", itemDescription: "Cheese, Tomato, Lettuce", itemprice: "32.16", availablePoints: 1429),
-        OrderItemModel(amount: "4", itemImage: "https://www.recipetineats.com/wp-content/uploads/2022/09/Fries-with-rosemary-salt_1.jpg", itemTitle: "Fries", itemDescription: "Peri Salt, Mayonaise", itemprice: "4.30", availablePoints: 62)
+        OrderItemModel(amount: "1", itemImage: "https://www.jacobsdouweegbertsprofessional.co.uk/contentassets/41f932f582d646939e331c1921d5e63a/coffee-cup-bean-eyes-diy-395x392.jpg?preset=two-halves-image-mobile-mobile", itemTitle: "Caffe Latte", itemDescription: "Coffee", itemprice: "4.1", availablePoints: 124),
+        OrderItemModel(amount: "1", itemImage: "https://static.onecms.io/wp-content/uploads/sites/43/2022/07/05/8350-chantals-new-york-ddmfs-cheesecake-3x4-311.jpg", itemTitle: "Cheesecake", itemDescription: "Dessert", itemprice: "2.4", availablePoints: 62)
     ]
     
     lazy var headerview: OrderDetailHeaderView = {
@@ -14,13 +12,6 @@ class OrderDetailsViewController: UIViewController {
         return view
     }()
     
-    lazy var qrCodeString: UILabel = {
-        let label = UILabel()
-        label.text = scannedCode
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
-        return label
-    }()
     
     lazy var orderCollectionView: UICollectionView = {
         let flowlayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -34,6 +25,14 @@ class OrderDetailsViewController: UIViewController {
         collectionView.allowsMultipleSelection = false
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
+    }()
+    
+    lazy var checkoutImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.image = UIImage(named: "Checkout3")
+        return imageView
     }()
     
 //    lazy var mainStackView: UIStackView = {
@@ -63,14 +62,14 @@ class OrderDetailsViewController: UIViewController {
     }
     
     func populateUI() {
-        headerview.configure(model: OrderHeaderModel(restaurantName: "Eat Tokyo Burgers", potentialPoints: 398))
+        headerview.configure(model: OrderHeaderModel(restaurantName: "Pret A Manger", potentialPoints: 398))
     }
     
     func setupView() {
         view.backgroundColor = .white
         view.addSubview(headerview)
         view.addSubview(orderCollectionView)
-        view.addSubview(qrCodeString)
+        view.addSubview(checkoutImage)
         
         headerview.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 12,
                              bottom: nil, paddingBottom: 0,
@@ -85,10 +84,7 @@ class OrderDetailsViewController: UIViewController {
                                    left: view.leftAnchor, paddingLeft: 20,
                                    right: view.rightAnchor, paddingRight: 20,
                                    width: 0, height: 200)
-        
-        qrCodeString.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
-        qrCodeString.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        qrCodeString.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        checkoutImage.anchor(top: orderCollectionView.bottomAnchor, paddingTop: 26, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 350)
         
     }
     

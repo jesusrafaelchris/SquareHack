@@ -4,7 +4,6 @@ import FirebaseFirestore
 
 protocol HomeViewModelProtocol {
     func getUserPointsBalance(completion: @escaping(Int) -> Void)
-    func fetchFavourites(completion: @escaping ([FavouriteModel]) -> Void)
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -29,32 +28,5 @@ class HomeViewModel: HomeViewModelProtocol {
                 }
             }
         })
-    }
-    
-    func fetchFavourites(completion: @escaping ([FavouriteModel]) -> Void) {
-        var favourites = [FavouriteModel]()
-        let collectionRef = Firestore.firestore().collection("shops")
-        collectionRef.getDocuments { (snapshot, error) in
-            favourites.removeAll()
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            if let documents = snapshot?.documents {
-                for document in documents {
-                    let data = document.data()
-                    do {
-                        let favourite = try JSONDecoder().decode(FavouriteModel.self, fromJSONObject: data)
-                        favourites.append(favourite)
-                    }
-                    catch {
-                        print(error)
-                    }
-                    
-                }
-            }
-            completion(favourites)
-        }
     }
 }

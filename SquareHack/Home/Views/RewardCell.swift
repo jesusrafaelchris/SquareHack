@@ -31,13 +31,14 @@ class RewardCell: UICollectionViewCell {
         return text
     }()
     
-    lazy var typeLabel: UILabel = {
-        let text = UILabel()
-        text.textColor = .darkGray
-        text.text = "Moin"
-        text.font = UIFont.systemFont(ofSize: 14)
-        text.numberOfLines = 0
-        return text
+    lazy var purchaseView: PurchaseView = {
+        let view = PurchaseView()
+        view.backgroundColor = .clear
+        view.backgroundColor = .white
+        view.totalCircles = 5
+        view.filledCircles = 3
+        view.frame = CGRect(x: 50, y: 50, width: 300, height: 50)
+        return view
     }()
     
     let whiteBoxView: UIView = {
@@ -75,7 +76,9 @@ class RewardCell: UICollectionViewCell {
         imageView.image = UIImage(named: data.image)
         logoImageView.image = UIImage(named: data.logo)
         titleLabel.text = data.title
-        typeLabel.text = data.type
+        purchaseView.totalCircles = 5
+        purchaseView.filledCircles = data.purchasesToGo
+        purchaseView.setNeedsDisplay()
     }
     
     required init?(coder: NSCoder) {
@@ -86,9 +89,10 @@ class RewardCell: UICollectionViewCell {
         addSubview(imageView)
         imageView.addSubview(darkOverlay)
         addSubview(whiteBoxView)
-        whiteBoxView.addSubview(typeLabel)
         whiteBoxView.addSubview(titleLabel)
         whiteBoxView.addSubview(logoImageView)
+        whiteBoxView.addSubview(purchaseView)
+
         
         whiteBoxView.translatesAutoresizingMaskIntoConstraints = false
         whiteBoxView.anchor(top: imageView.bottomAnchor, paddingTop: -0.7*145, bottom: imageView.bottomAnchor, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 0, right: imageView.rightAnchor, paddingRight: 0, width: 0, height: 0)
@@ -102,7 +106,7 @@ class RewardCell: UICollectionViewCell {
         titleLabel.anchor(top: logoImageView.bottomAnchor, paddingTop: 4, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
         titleLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
         
-        typeLabel.anchor(top: titleLabel.bottomAnchor, paddingTop: 4, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 8, right: imageView.rightAnchor, paddingRight: 8, width: 0, height: 0)
+        purchaseView.anchor(top: titleLabel.bottomAnchor, paddingTop: 4, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 16, right: imageView.rightAnchor, paddingRight: 8, width: 0, height: 40)
         
     }
 }
@@ -111,5 +115,5 @@ struct Reward {
     var image: String
     var logo: String
     var title: String
-    var type: String
+    var purchasesToGo: Int
 }

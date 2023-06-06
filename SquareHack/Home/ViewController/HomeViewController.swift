@@ -8,13 +8,22 @@ class HomeViewController: UIViewController {
     var customersAPICoordinator: CustomersAPICoordinatorProtocol?
     
     var rewards: [Reward] = [
-        Reward(image: "github", logo: "github", title: "Terry", type: "3 more purchases"),
-        Reward(image: "github", logo: "github", title: "Nine", type: "2 more purchases"),
-        Reward(image: "github", logo: "github", title: "Rocky", type: "4 more purchases"),
-        Reward(image: "github", logo: "github", title: "KFC", type: "1 more purchases"),
+        Reward(image: "Coffee", logo: "PretLogo", title: "Pret A Manger", purchasesToGo: 0),
+        Reward(image: "DominosBackground", logo: "dominos", title: "Domino's", purchasesToGo: 1),
+        Reward(image: "Pharmacy", logo: "Boots", title: "Boots", purchasesToGo: 2),
+        Reward(image: "Bagondus", logo: "makdonaldeu", title: "McDonald's", purchasesToGo: 4),
     ]
     
-    var favourites = [FavouriteModel]()
+    var favourites: [Favourite] = [
+        Favourite(image: "OlleBackground", logo: "Olle", title: "Olle", type: "Korean Restaurant focused on Authentic BBQ", latitude: 51.512044, longitude: -0.131494, hasOffer: true),
+        Favourite(image: "EATBackground", logo: "EAT", title: "Eat Tokyo", type: "Japanese Izayaka-Style Restaurant ", latitude: 51.512584, longitude: -0.120504, hasOffer: false),
+        Favourite(image: "GRMImage", logo: "GRM", title: "Gordon Ramsay's Street Burger - The O2", type: "Burger Joint like no other", latitude: 51.502724, longitude: 0.0045118, hasOffer: true),
+        Favourite(image: "DIYABackground", logo: "DIYA", title: "DIYA - Indian Cuisine", type: "Indian Restaurant bringing the Occident", latitude: 37.78352, longitude: -122.40938, hasOffer: false),
+        Favourite(image: "Bagondus", logo: "makdonaldeu", title: "McDonald's", type: "Fast-food staple, loved by all", latitude: 37.76538, longitude: -122.407954, hasOffer: false),
+        Favourite(image: "Coffee", logo: "PretLogo", title: "Pret A Manger", type: "Coffee shop, sandwich bar, all in one", latitude: 37.76538, longitude: -122.407954, hasOffer: true),
+    ]
+    
+    var shuffledFavourites: [Favourite] = []
     
     lazy var topBarView: TopBarView = {
         let topBarView = TopBarView()
@@ -26,10 +35,11 @@ class HomeViewController: UIViewController {
     
     lazy var giftLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.text = "450 Points to\nSilver Level"
+        label.textColor = .darkGray
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.text = "81 Points to\nnext Tier"
         label.numberOfLines = 2
+        label.textAlignment = .center
         return label
     }()
     
@@ -108,6 +118,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         checkLoggedIn()
+        shuffledFavourites = favourites.shuffled()
 //        let uuid = UUID()
 //        let uuidString = uuid.uuidString
 //        let object = CatalogObjectModel(idempotencyKey: uuidString, object: Object(type: "ITEM", itemData: ItemData(abbreviation: "Coke", name: "Coke", variations: [Variation(id: "#Zero", type: "ITEM_VARIATION", itemVariationData: ItemVariationData(name: "Zero", pricingType: "FIXED_PRICING", priceMoney: PriceMoney(amount: 1000, currency: "GBP")))]), id: "#Coke"))
@@ -148,6 +159,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(topBarView)
         view.addSubview(countView)
+        view.addSubview(giftLabel)
         view.addSubview(rewardLabel)
         view.addSubview(rewardMoreButton)
         view.addSubview(rewardCollectionView)
@@ -158,6 +170,8 @@ class HomeViewController: UIViewController {
         topBarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 16, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 32)
 
         countView.anchor(top: topBarView.bottomAnchor, paddingTop: 44, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 64)
+        
+        giftLabel.anchor(top: topBarView.bottomAnchor, paddingTop: 74, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: view.rightAnchor, paddingRight: 40, width: 0, height: 0)
         
         rewardLabel.anchor(top: countView.bottomAnchor, paddingTop: 108, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
         
@@ -195,12 +209,6 @@ class HomeViewController: UIViewController {
     }
     
     func setupUI() {
-        viewModel?.fetchFavourites { [weak self] favourites in
-            self?.favourites = favourites
-            DispatchQueue.main.async {
-                self?.favouriteCollectionView.reloadData()
-            }
-        }
         
         viewModel?.getUserPointsBalance(completion: { [weak self] points in
             self?.countView.updatePointsAndTier(points: points)
@@ -216,9 +224,6 @@ extension HomeViewController: TopBarViewDelegate {
         case "Profile":
             let profileVC = ProfileViewController()
             present(profileVC, animated: true, completion: nil)
-        case "Manage Subscription":
-            let subscriptionVC = SubscriptionViewController()
-            present(subscriptionVC, animated: true, completion: nil)
         case "Settings":
             let settingsVC = SettingsViewController()
             present(settingsVC, animated: true, completion: nil)
@@ -231,28 +236,31 @@ extension HomeViewController: TopBarViewDelegate {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == rewardCollectionView {
+        if collectionView == self.rewardCollectionView {
             return rewards.count
-        } else {
-            return favourites.count
+        } else if collectionView == self.favouriteCollectionView {
+            return shuffledFavourites.count
         }
+        return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == rewardCollectionView {
+        if collectionView == self.rewardCollectionView {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "rewardCell",
                 for: indexPath) as? RewardCell else { return UICollectionViewCell() }
             let reward = rewards[indexPath.row]
             cell.configure(data: reward)
             return cell
-        } else {
+        } else if collectionView == self.favouriteCollectionView {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "favouriteCell",
                 for: indexPath) as? FavouriteCell else { return UICollectionViewCell() }
-            let favourite = favourites[indexPath.row]
+            let favourite = shuffledFavourites[indexPath.row]
             cell.configure(data: favourite)
             return cell
+        } else {
+            return UICollectionViewCell()
         }
     }
     
@@ -276,5 +284,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // go to main view
+        let api = APICoordinator()
+        let vc = ShopWalletViewController(viewModel: ShopWalletControllerViewModel(catalogAPICoordinator: CatalogAPICoordinator(apiCoordinator: api), customersAPICoordinator: CustomersAPICoordinator(apiCoordinator: api), subscriptionAPICoordinator: SubscriptionAPICoordinator(apiCoordinator: api)))
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

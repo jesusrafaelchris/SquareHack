@@ -6,7 +6,34 @@ class ShopWalletViewController: UIViewController {
     var shop: String = "Pret A Manger"
     var pretColour = UIColor(red: 0.57, green: 0.00, blue: 0.15, alpha: 1.00)
     
+    
     lazy var ticketStubView = TicketStubView()
+    
+    lazy var offerLabel: UILabel = {
+        let text = UILabel()
+        text.textColor = .black
+        text.font = UIFont.boldSystemFont(ofSize: 26)
+        text.text = "Offers"
+        return text
+    }()
+    
+    lazy var offerView = OfferView()
+    
+    lazy var subButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(red: 0.57, green: 0.00, blue: 0.15, alpha: 1.00)
+        button.setTitle("Subscribe", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(subscribeButtonClicked), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func subscribeButtonClicked() {
+        let subscriptionSettingsViewController = SubscriptionSettingsViewController()
+        self.present(subscriptionSettingsViewController, animated: true, completion: nil)
+    }
     
     init(viewModel: ShopWalletControllerViewModelProcotol) {
         self.viewModel = viewModel
@@ -24,13 +51,23 @@ class ShopWalletViewController: UIViewController {
         //subscribeToShop(shopName: "McD", cost: 500)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func setupNavBar() {
         self.title = shop
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.black).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(backToPreviousView))
         
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill")?.withTintColor(pretColour).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(heartShop))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart")?.withTintColor(pretColour).withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(heartShop))
     }
     
     @objc func backToPreviousView() {
@@ -44,12 +81,23 @@ class ShopWalletViewController: UIViewController {
     func setupView() {
         view.backgroundColor = .white
         view.addSubview(ticketStubView)
+        view.addSubview(offerLabel)
+        view.addSubview(offerView)
+        view.addSubview(subButton)
         
         ticketStubView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 12,
                               bottom: nil, paddingBottom: 0,
                               left: view.leftAnchor, paddingLeft: 16,
                               right: view.rightAnchor, paddingRight: 16,
-                              width: 0, height: 150)
+                              width: 0, height: 175)
+        
+        offerLabel.anchor(top: ticketStubView.bottomAnchor, paddingTop: 32, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 0, height: 0)
+        
+        offerView.anchor(top: offerLabel.bottomAnchor, paddingTop: 22, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 200)
+        
+        subButton.anchor(top: offerView.bottomAnchor, paddingTop: 36, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 120, height: 40)
+        subButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
         
     }
     //MARK: Subscription API

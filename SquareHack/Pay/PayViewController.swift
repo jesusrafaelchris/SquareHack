@@ -31,6 +31,8 @@ class PayViewController: UIViewController {
         return button
     }()
     
+    lazy var donationView = DonationView()
+    
     @objc func buttonTapped() {
         let scannerVC = QRScanViewController()
         navigationController?.pushViewController(scannerVC, animated: true)
@@ -54,13 +56,19 @@ class PayViewController: UIViewController {
     func setUpView() {
         self.title = "Pay"
         navigationController?.navigationBar.prefersLargeTitles = true
+        view.addSubview(donationView)
         view.addSubview(descriptionLabel)
         view.addSubview(scannerButton)
         
-        descriptionLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 24, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        donationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        donationView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        scannerButton.anchor(top: descriptionLabel.bottomAnchor, paddingTop: 68, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 140, height: 54)
+        scannerButton.anchor(top: donationView.bottomAnchor, paddingTop: 48, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 140, height: 54)
         scannerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        descriptionLabel.anchor(top: scannerButton.bottomAnchor, paddingTop: 42, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: view.rightAnchor, paddingRight: 16, width: 0, height: 0)
+        
+
 
     }
 }

@@ -25,7 +25,6 @@
 		806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C32A1D087100B45956 /* OrderItemCell.swift */; };
 		806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956C52A1D0E0800B45956 /* OrderItemModel.swift */; };
 		806956C92A1D0F9100B45956 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 806956C82A1D0F9100B45956 /* SDWebImage */; };
-		806956D12A2A042000B45956 /* FavouriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D02A2A042000B45956 /* FavouriteModel.swift */; };
 		806956D32A2A910200B45956 /* OrdersAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D22A2A910100B45956 /* OrdersAPICoordinator.swift */; };
 		806956D52A2A915400B45956 /* CatalogAPICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D42A2A915400B45956 /* CatalogAPICoordinator.swift */; };
 		806956D72A2A932B00B45956 /* HTTPMethodEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806956D62A2A932B00B45956 /* HTTPMethodEnum.swift */; };
@@ -73,6 +72,11 @@
 		80E796D42A1CC1A600353DDD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796D32A1CC1A600353DDD /* SignUpViewController.swift */; };
 		80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E796D52A1CC1B100353DDD /* LoginViewController.swift */; };
 		80E796D82A1CC9FF00353DDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80E796D72A1CC9FE00353DDD /* GoogleService-Info.plist */; };
+		DA0D4C072A2EC0A300015732 /* DonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D4C062A2EC0A300015732 /* DonationView.swift */; };
+		DA0D4C092A2EDF9D00015732 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D4C082A2EDF9D00015732 /* PurchaseView.swift */; };
+		DA0D4C0B2A2EE61400015732 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D4C0A2A2EE61400015732 /* LineView.swift */; };
+		DA0D4C0D2A2EE94000015732 /* OfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D4C0C2A2EE94000015732 /* OfferView.swift */; };
+		DA0D4C0F2A2EF45E00015732 /* SubscriptionSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D4C0E2A2EF45E00015732 /* SubscriptionSettingsViewController.swift */; };
 		DA5AA1992A1DFEB900C36BC3 /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AA1982A1DFEB900C36BC3 /* RewardCell.swift */; };
 		DAD3900D2A1D164B00ECF68F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3900C2A1D164B00ECF68F /* TopBarView.swift */; };
 		DAD3900F2A1D341100ECF68F /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3900E2A1D341100ECF68F /* CountView.swift */; };
@@ -86,7 +90,6 @@
 		DAE57DAC2A22A79B00C78A8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE57DAB2A22A79B00C78A8B /* MapViewController.swift */; };
 		DAEF120A2A25614B0063A4FF /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF12092A25614B0063A4FF /* PayViewController.swift */; };
 		DAEF120C2A2567DC0063A4FF /* QRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF120B2A2567DC0063A4FF /* QRScanViewController.swift */; };
-		DAEF120E2A257CEB0063A4FF /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */; };
 		DAEF12102A257E1A0063A4FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */; };
 		DAEF12122A257E350063A4FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF12112A257E350063A4FF /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -103,7 +106,6 @@
 		806956C12A1CFE2700B45956 /* OrderHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderModel.swift; sourceTree = "<group>"; };
 		806956C32A1D087100B45956 /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
 		806956C52A1D0E0800B45956 /* OrderItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemModel.swift; sourceTree = "<group>"; };
-		806956D02A2A042000B45956 /* FavouriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteModel.swift; sourceTree = "<group>"; };
 		806956D22A2A910100B45956 /* OrdersAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersAPICoordinator.swift; sourceTree = "<group>"; };
 		806956D42A2A915400B45956 /* CatalogAPICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogAPICoordinator.swift; sourceTree = "<group>"; };
 		806956D62A2A932B00B45956 /* HTTPMethodEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodEnum.swift; sourceTree = "<group>"; };
@@ -153,6 +155,11 @@
 		80E796D32A1CC1A600353DDD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		80E796D52A1CC1B100353DDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80E796D72A1CC9FE00353DDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DA0D4C062A2EC0A300015732 /* DonationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationView.swift; sourceTree = "<group>"; };
+		DA0D4C082A2EDF9D00015732 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		DA0D4C0A2A2EE61400015732 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		DA0D4C0C2A2EE94000015732 /* OfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferView.swift; sourceTree = "<group>"; };
+		DA0D4C0E2A2EF45E00015732 /* SubscriptionSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSettingsViewController.swift; sourceTree = "<group>"; };
 		DA5AA1982A1DFEB900C36BC3 /* RewardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCell.swift; sourceTree = "<group>"; };
 		DAD3900C2A1D164B00ECF68F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		DAD3900E2A1D341100ECF68F /* CountView.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
@@ -166,7 +173,6 @@
 		DAE57DAB2A22A79B00C78A8B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DAEF12092A25614B0063A4FF /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		DAEF120B2A2567DC0063A4FF /* QRScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanViewController.swift; sourceTree = "<group>"; };
-		DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DAEF12112A257E350063A4FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				80E796932A1B6ADC00353DDD /* HomeViewController.swift */,
-				DAEF120D2A257CEB0063A4FF /* SubscriptionViewController.swift */,
 				DAEF120F2A257E1A0063A4FF /* ProfileViewController.swift */,
 				DAEF12112A257E350063A4FF /* SettingsViewController.swift */,
 			);
@@ -230,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				806956B92A1CE86C00B45956 /* UserModel.swift */,
-				806956D02A2A042000B45956 /* FavouriteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +247,7 @@
 				DA5AA1982A1DFEB900C36BC3 /* RewardCell.swift */,
 				DAE57D9C2A1F47DC00C78A8B /* FavouriteCell.swift */,
 				DAE57D9E2A1F5ACA00C78A8B /* ProgressView.swift */,
+				DA0D4C082A2EDF9D00015732 /* PurchaseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				DAE57DA72A20F8E800C78A8B /* SuccessPayViewController.swift */,
 				DAEF12092A25614B0063A4FF /* PayViewController.swift */,
 				DAEF120B2A2567DC0063A4FF /* QRScanViewController.swift */,
+				DA0D4C062A2EC0A300015732 /* DonationView.swift */,
 			);
 			path = Pay;
 			sourceTree = "<group>";
@@ -441,6 +447,9 @@
 				806957072A2D2F7B00B45956 /* ShopWalletControllerViewModel.swift */,
 				806956FA2A2D260A00B45956 /* CardCell.swift */,
 				806957042A2D2B4200B45956 /* CV Card Logic */,
+				DA0D4C0A2A2EE61400015732 /* LineView.swift */,
+				DA0D4C0C2A2EE94000015732 /* OfferView.swift */,
+				DA0D4C0E2A2EF45E00015732 /* SubscriptionSettingsViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -570,7 +579,6 @@
 				DAE57DA62A20A90E00C78A8B /* RecommendedCell.swift in Sources */,
 				806956BA2A1CE86C00B45956 /* UserModel.swift in Sources */,
 				806956B62A1CE72F00B45956 /* HomeViewModel.swift in Sources */,
-				DAEF120E2A257CEB0063A4FF /* SubscriptionViewController.swift in Sources */,
 				806956E12A2AACA300B45956 /* CatalogSearchModel.swift in Sources */,
 				80E796CD2A1CB7C400353DDD /* ChooseSorLViewController.swift in Sources */,
 				DA5AA1992A1DFEB900C36BC3 /* RewardCell.swift in Sources */,
@@ -578,7 +586,6 @@
 				806957102A2D393B00B45956 /* SubscriptionResponseModel.swift in Sources */,
 				80E796C42A1BF7E800353DDD /* ScanToPayViewController.swift in Sources */,
 				806956F82A2B5AE600B45956 /* APIAccessType.swift in Sources */,
-				806956D12A2A042000B45956 /* FavouriteModel.swift in Sources */,
 				DAE57D9F2A1F5ACA00C78A8B /* ProgressView.swift in Sources */,
 				806956BC2A1CFCF300B45956 /* OrderDetailsViewController.swift in Sources */,
 				80E796D62A1CC1B100353DDD /* LoginViewController.swift in Sources */,
@@ -598,9 +605,11 @@
 				80E796972A1B6AFF00353DDD /* TerminalAPICoordinator.swift in Sources */,
 				806957162A2E08CF00B45956 /* TicketStubView.swift in Sources */,
 				80E796C72A1BF84800353DDD /* TabBarController.swift in Sources */,
+				DA0D4C0D2A2EE94000015732 /* OfferView.swift in Sources */,
 				806957122A2D3BC800B45956 /* SubscriptionAssignModel.swift in Sources */,
 				80E796822A1B6A4100353DDD /* ViewController.swift in Sources */,
 				80E796D22A1CBAF200353DDD /* UIColor+Ext.swift in Sources */,
+				DA0D4C092A2EDF9D00015732 /* PurchaseView.swift in Sources */,
 				806957012A2D26F700B45956 /* HFCardCollectionViewLayoutDelegate.swift in Sources */,
 				80E796992A1B6B2200353DDD /* SubscriptionAPICoordinator.swift in Sources */,
 				806956DF2A2AABD100B45956 /* CatalogQueryModel.swift in Sources */,
@@ -612,6 +621,7 @@
 				80E796D02A1CB90B00353DDD /* UIView+Ext.swift in Sources */,
 				DAE57DA22A200EA700C78A8B /* DiscoverViewController.swift in Sources */,
 				DAE57DA82A20F8E800C78A8B /* SuccessPayViewController.swift in Sources */,
+				DA0D4C072A2EC0A300015732 /* DonationView.swift in Sources */,
 				806956BF2A1CFDD000B45956 /* OrderDetailHeaderView.swift in Sources */,
 				DAE57DA42A201AD800C78A8B /* SearchTextField.swift in Sources */,
 				DAE57DAC2A22A79B00C78A8B /* MapViewController.swift in Sources */,
@@ -624,6 +634,7 @@
 				806956D72A2A932B00B45956 /* HTTPMethodEnum.swift in Sources */,
 				806956D52A2A915400B45956 /* CatalogAPICoordinator.swift in Sources */,
 				DAE57D9D2A1F47DC00C78A8B /* FavouriteCell.swift in Sources */,
+				DA0D4C0F2A2EF45E00015732 /* SubscriptionSettingsViewController.swift in Sources */,
 				806956D32A2A910200B45956 /* OrdersAPICoordinator.swift in Sources */,
 				DAEF12102A257E1A0063A4FF /* ProfileViewController.swift in Sources */,
 				806957142A2D3CDE00B45956 /* CreateSubscriptionResponseModel.swift in Sources */,
@@ -633,6 +644,7 @@
 				806956FD2A2D265A00B45956 /* HFCardCollectionViewCell.swift in Sources */,
 				806957032A2D285400B45956 /* UIView+Ext2.swift in Sources */,
 				806956C22A1CFE2700B45956 /* OrderHeaderModel.swift in Sources */,
+				DA0D4C0B2A2EE61400015732 /* LineView.swift in Sources */,
 				806956C42A1D087100B45956 /* OrderItemCell.swift in Sources */,
 				806956C62A1D0E0800B45956 /* OrderItemModel.swift in Sources */,
 				806956FB2A2D260A00B45956 /* CardCell.swift in Sources */,
