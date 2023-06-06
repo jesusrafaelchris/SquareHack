@@ -5,7 +5,7 @@ class ShopWalletViewController: UIViewController {
     var viewModel: ShopWalletControllerViewModelProcotol?
     var shop: String = "Pret A Manger"
     var pretColour = UIColor(red: 0.57, green: 0.00, blue: 0.15, alpha: 1.00)
-    
+    var model: CardModel?
     
     lazy var ticketStubView = TicketStubView()
     
@@ -35,8 +35,10 @@ class ShopWalletViewController: UIViewController {
         self.present(subscriptionSettingsViewController, animated: true, completion: nil)
     }
     
-    init(viewModel: ShopWalletControllerViewModelProcotol) {
+    init(viewModel: ShopWalletControllerViewModelProcotol,
+         model: CardModel) {
         self.viewModel = viewModel
+        self.model = model
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,6 +51,16 @@ class ShopWalletViewController: UIViewController {
         setupView()
         setupNavBar()
         //subscribeToShop(shopName: "McD", cost: 500)
+        configureUI()
+    }
+    
+    func configureUI() {
+        if let model = model {
+            self.title = model.shopName
+            ticketStubView.backgroundColor = UIColor.fromHex(hexString: model.backgroundColor)
+            ticketStubView.subLabel.text = "You're not subscribed to\n\(model.shopName)"
+            subButton.backgroundColor = UIColor.fromHex(hexString: model.backgroundColor)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

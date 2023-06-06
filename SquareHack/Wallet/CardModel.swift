@@ -7,4 +7,5 @@ struct CardModel {
     var bottomRightLabel: String
     var setImage: String
     var setSquareImage: String
+    var shopName: String
 }

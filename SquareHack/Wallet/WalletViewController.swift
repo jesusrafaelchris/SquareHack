@@ -68,17 +68,17 @@ class WalletViewController: UIViewController {
                                   width: 0, height: 0)
         cards = [
             
-            CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: 23513463461", topLabel: displayName!, bottomRightLabel: "123", setImage: "mcdonalds_text", setSquareImage: "mcdonalds"),
+            CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: 23513463461", topLabel: displayName!, bottomRightLabel: "123", setImage: "mcdonalds_text", setSquareImage: "mcdonalds", shopName: "McDonalds"),
             
-            CardModel(backgroundColor: "#ffcf01", cardLabel: "Membership Number: 10195723552", topLabel: displayName!, bottomRightLabel: "24", setImage: "music_text", setSquareImage: "music"),
+            CardModel(backgroundColor: "#ffcf01", cardLabel: "Membership Number: 10195723552", topLabel: displayName!, bottomRightLabel: "24", setImage: "music_text", setSquareImage: "music", shopName: "Melodica"),
             
-            CardModel(backgroundColor: "#910027", cardLabel: "Membership Number: 5232 2352 2621 6336", topLabel: displayName!, bottomRightLabel: "0", setImage: "pret_text", setSquareImage: "pret"),
+            CardModel(backgroundColor: "#910027", cardLabel: "Membership Number: 5232 2352 2621 6336", topLabel: displayName!, bottomRightLabel: "0", setImage: "pret_text", setSquareImage: "pret", shopName: "Pret A Manger"),
             
-            CardModel(backgroundColor: "#f82494", cardLabel: "Membership Number: SPDRG0X2134", topLabel: displayName!, bottomRightLabel: "47", setImage: "superdrug_text", setSquareImage: "superdrug"),
+            CardModel(backgroundColor: "#f82494", cardLabel: "Membership Number: SPDRG0X2134", topLabel: displayName!, bottomRightLabel: "47", setImage: "superdrug_text", setSquareImage: "superdrug", shopName: "Superdrug"),
             
-            CardModel(backgroundColor: "#173302", cardLabel: "Membership Number: 9982357235", topLabel: displayName!, bottomRightLabel: "236", setImage: "barber_text", setSquareImage: "barber"),
+            CardModel(backgroundColor: "#173302", cardLabel: "Membership Number: 9982357235", topLabel: displayName!, bottomRightLabel: "236", setImage: "barber_text", setSquareImage: "barber", shopName: "Most High Barbers"),
             
-            CardModel(backgroundColor: "#086494", cardLabel: "Membership Number: SQWT029423", topLabel: displayName!, bottomRightLabel: "127", setImage: "dominos_text", setSquareImage: "dominos"),
+            CardModel(backgroundColor: "#086494", cardLabel: "Membership Number: SQWT029423", topLabel: displayName!, bottomRightLabel: "127", setImage: "dominos_text", setSquareImage: "dominos", shopName: "Dominos"),
         ]
     }
 }
@@ -99,10 +99,11 @@ extension WalletViewController: UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.cardCollectionViewLayout?.revealedIndex == indexPath.item {
+            let card = cards[indexPath.item]
             self.cardCollectionViewLayout?.unrevealRevealedCardAction()
             // go to main view
             let api = APICoordinator()
-            let vc = ShopWalletViewController(viewModel: ShopWalletControllerViewModel(catalogAPICoordinator: CatalogAPICoordinator(apiCoordinator: api), customersAPICoordinator: CustomersAPICoordinator(apiCoordinator: api), subscriptionAPICoordinator: SubscriptionAPICoordinator(apiCoordinator: api)))
+            let vc = ShopWalletViewController(viewModel: ShopWalletControllerViewModel(catalogAPICoordinator: CatalogAPICoordinator(apiCoordinator: api), customersAPICoordinator: CustomersAPICoordinator(apiCoordinator: api), subscriptionAPICoordinator: SubscriptionAPICoordinator(apiCoordinator: api)), model: card)
             navigationController?.pushViewController(vc, animated: true)
         } else {
             self.cardCollectionViewLayout?.revealCardAt(index: indexPath.item)

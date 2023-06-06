@@ -227,6 +227,8 @@ extension HomeViewController: TopBarViewDelegate {
         case "Settings":
             let settingsVC = SettingsViewController()
             present(settingsVC, animated: true, completion: nil)
+        case "Sign Out":
+            logOut()
         default:
             break
         }
@@ -287,9 +289,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // go to main view
-        let api = APICoordinator()
-        let vc = ShopWalletViewController(viewModel: ShopWalletControllerViewModel(catalogAPICoordinator: CatalogAPICoordinator(apiCoordinator: api), customersAPICoordinator: CustomersAPICoordinator(apiCoordinator: api), subscriptionAPICoordinator: SubscriptionAPICoordinator(apiCoordinator: api)))
-        navigationController?.pushViewController(vc, animated: true)
+//        // go to main view
+//        let api = APICoordinator()
+//        let empty = Car
+//        let vc = ShopWalletViewController(viewModel: ShopWalletControllerViewModel(catalogAPICoordinator: CatalogAPICoordinator(apiCoordinator: api), customersAPICoordinator: CustomersAPICoordinator(apiCoordinator: api), subscriptionAPICoordinator: SubscriptionAPICoordinator(apiCoordinator: api)), model: //)
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
