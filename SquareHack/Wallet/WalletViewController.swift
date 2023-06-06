@@ -1,24 +1,13 @@
 import UIKit
+import Firebase
 
 class WalletViewController: UIViewController {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     
-    var cards: [CardModel] = [
-        
-        
-        CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: 0912345678999", topLabel: "Christian Grinling", bottomRightLabel: "3,482", setImage: "mcdonalds_text", setSquareImage: "mcdonalds"),
-        
-        CardModel(backgroundColor: "#ffcf01", cardLabel: "Membership Number: 0912345678444", topLabel: "Christian Grinling", bottomRightLabel: "1,211", setImage: "music_text", setSquareImage: "music"),
-        
-        CardModel(backgroundColor: "#910027", cardLabel: "Membership Number: 0912345678888", topLabel: "Christian Grinling", bottomRightLabel: "182", setImage: "pret_text", setSquareImage: "pret"),
-        
-        CardModel(backgroundColor: "#f82494", cardLabel: "Membership Number: 0912345678666", topLabel: "Christian Grinling", bottomRightLabel: "991", setImage: "superdrug_text", setSquareImage: "superdrug"),
-        
-        CardModel(backgroundColor: "#173302", cardLabel: "Membership Number: 0912345678555", topLabel: "Christian Grinling", bottomRightLabel: "1,611", setImage: "barber_text", setSquareImage: "barber"),
-        
-        CardModel(backgroundColor: "#086494", cardLabel: "Membership Number: 0912345678777", topLabel: "Christian Grinling", bottomRightLabel: "1,511", setImage: "dominos_text", setSquareImage: "dominos"),
-    ]
+    var displayName: String? = Auth.auth().currentUser?.displayName
+    
+    var cards: [CardModel] = []
     
     lazy var cardCollectionView: UICollectionView = {
         let flowlayout: UICollectionViewLayout = HFCardCollectionViewLayout()
@@ -69,6 +58,7 @@ class WalletViewController: UIViewController {
         view.backgroundColor = .white
         self.title = "Wallet"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         view.addSubview(cardCollectionView)
         
         cardCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32,
@@ -76,6 +66,20 @@ class WalletViewController: UIViewController {
                                   left: view.leftAnchor, paddingLeft: 16,
                                   right: view.rightAnchor, paddingRight: 16,
                                   width: 0, height: 0)
+        cards = [
+            
+            CardModel(backgroundColor: "#DB0009", cardLabel: "Membership Number: 23513463461", topLabel: displayName!, bottomRightLabel: "123", setImage: "mcdonalds_text", setSquareImage: "mcdonalds"),
+            
+            CardModel(backgroundColor: "#ffcf01", cardLabel: "Membership Number: 10195723552", topLabel: displayName!, bottomRightLabel: "24", setImage: "music_text", setSquareImage: "music"),
+            
+            CardModel(backgroundColor: "#910027", cardLabel: "Membership Number: 5232 2352 2621 6336", topLabel: displayName!, bottomRightLabel: "0", setImage: "pret_text", setSquareImage: "pret"),
+            
+            CardModel(backgroundColor: "#f82494", cardLabel: "Membership Number: SPDRG0X2134", topLabel: displayName!, bottomRightLabel: "47", setImage: "superdrug_text", setSquareImage: "superdrug"),
+            
+            CardModel(backgroundColor: "#173302", cardLabel: "Membership Number: 9982357235", topLabel: displayName!, bottomRightLabel: "236", setImage: "barber_text", setSquareImage: "barber"),
+            
+            CardModel(backgroundColor: "#086494", cardLabel: "Membership Number: SQWT029423", topLabel: displayName!, bottomRightLabel: "127", setImage: "dominos_text", setSquareImage: "dominos"),
+        ]
     }
 }
 

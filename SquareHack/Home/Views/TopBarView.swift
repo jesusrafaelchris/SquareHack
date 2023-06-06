@@ -18,9 +18,6 @@ class TopBarView: UIView {
         let profileAction = UIAction(title: "Profile", image: UIImage(systemName: "person.crop.circle"), identifier: nil) { sender in
             self.actionHandle(sender: sender)
         }
-        let subscriptionAction = UIAction(title: "Manage Subscription", image: UIImage(systemName: "pencil"), identifier: nil) { sender in
-            self.actionHandle(sender: sender)
-        }
         let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gearshape"), identifier: nil) { sender in
             self.actionHandle(sender: sender)
         }
@@ -28,7 +25,7 @@ class TopBarView: UIView {
             self.actionHandle(sender: sender)
         }
         let submenu = UIMenu(title: "", options: .displayInline, children: [signOutAction])
-        let menu = UIMenu(title: "", children: [profileAction, subscriptionAction, settingsAction, submenu])
+        let menu = UIMenu(title: "", children: [profileAction, settingsAction, submenu])
         imageView.menu = menu
         imageView.showsMenuAsPrimaryAction = true
         return imageView

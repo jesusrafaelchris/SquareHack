@@ -37,6 +37,9 @@ class RecommendedCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
@@ -50,6 +53,7 @@ class RecommendedCell: UICollectionViewCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.layer.cornerRadius = 10.5
         button.isEnabled = false
+        button.isHidden = true
         return button
     }()
     
@@ -93,6 +97,7 @@ class RecommendedCell: UICollectionViewCell {
         logoImageView.image = UIImage(named: data.logo)
         titleLabel.text = data.title
         typeLabel.text = data.type
+        hasOfferButton.isHidden = !data.hasOffer
     }
     
     private func setUpView() {
@@ -118,7 +123,7 @@ class RecommendedCell: UICollectionViewCell {
         
         hasOfferButton.anchor(top: imageView.topAnchor, paddingTop: 10, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: imageView.rightAnchor, paddingRight: 10, width: 50, height: 21)
         
-        typeLabel.anchor(top: imageView.bottomAnchor, paddingTop: -54, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 16, right: imageView.rightAnchor, paddingRight: 8, width: 0, height: 0)
+        typeLabel.anchor(top: imageView.bottomAnchor, paddingTop: -54, bottom: nil, paddingBottom: 0, left: imageView.leftAnchor, paddingLeft: 16, right: imageView.rightAnchor, paddingRight: 24, width: 0, height: 0)
     }
 }
 
@@ -129,5 +134,6 @@ struct Recommended {
     var type: String
     let latitude: Double
     let longitude: Double
+    let hasOffer: Bool
 }
 

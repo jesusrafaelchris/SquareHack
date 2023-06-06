@@ -5,8 +5,8 @@
 //  Created by Artemiy Malyshau on 30/05/2023.
 //
 
-import AVFoundation
 import UIKit
+import AVFoundation
 
 class QRScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
@@ -48,7 +48,7 @@ class QRScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         if let creamColor = UIColor.creamColour?.cgColor {
             view.layer.borderColor = creamColor
         }
-        view.layer.borderWidth = 6
+        view.layer.borderWidth = 4.5
         view.layer.cornerRadius = 26
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -56,7 +56,7 @@ class QRScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
 
@@ -148,7 +148,6 @@ class QRScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         DispatchQueue.main.async { [weak self] in
             print(code)
             let newViewController = OrderDetailsViewController()
-            newViewController.scannedCode = code
             self?.navigationController?.pushViewController(newViewController, animated: true)
         }
     }
@@ -167,7 +166,7 @@ class QRScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 24, bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 16, right: nil, paddingRight: 0, width: 40, height: 40)
         
-        titleButton.anchor(top: backButton.bottomAnchor, paddingTop: 38, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 250, height: 90)
+        titleButton.anchor(top: backButton.bottomAnchor, paddingTop: 38, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 280, height: 80)
         titleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }

@@ -7,7 +7,15 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
     let locationManager = CLLocationManager()
     var userLocation: CLLocation?
     
-    var recommends: [Recommended] = []
+    var recommends: [Recommended] = [
+        Recommended(image: "OlleBackground", logo: "Olle", title: "Olle", type: "Korean Restaurant focused on Authentic BBQ", latitude: 51.512044, longitude: -0.131494, hasOffer: true),
+        Recommended(image: "EATBackground", logo: "EAT", title: "Eat Tokyo", type: "Japanese Izayaka-Style Restaurant ", latitude: 51.512584, longitude: -0.120504, hasOffer: false),
+        Recommended(image: "GRMImage", logo: "GRM", title: "Gordon Ramsay's Street Burger - The O2", type: "Burger Joint like no other", latitude: 51.502724, longitude: 0.0045118, hasOffer: true),
+        Recommended(image: "DIYABackground", logo: "DIYA", title: "DIYA - Indian Cuisine", type: "Indian Restaurant bringing the Occident", latitude: 37.78352, longitude: -122.40938, hasOffer: false),
+        Recommended(image: "Bagondus", logo: "makdonaldeu", title: "McDonald's", type: "Fast-food staple, loved by all", latitude: 37.76538, longitude: -122.407954, hasOffer: false),
+        ]
+    
+    var newRecommends: [Recommended] = []
     
     lazy var miniMapView: MKMapView = {
         let mapView = MKMapView()
@@ -119,7 +127,6 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
             guard let self = self else { return }
 
             if let error = error {
-                // Handle the error...
                 print("Error fetching shops: \(error)")
                 return
             }
@@ -154,6 +161,9 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        newRecommends = recommends.shuffled()
+        
         locationManager.delegate = self
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -266,18 +276,29 @@ class DiscoverViewController: UIViewController, CLLocationManagerDelegate, UITex
 extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.recommends.count ?? 0
+        if collectionView == self.recommendedCollectionView {
+            return recommends.count
+        } else if collectionView == self.newCollectionView {
+            return newRecommends.count
+        }
+        return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "recommendedCell",
             for: indexPath) as? RecommendedCell else { return UICollectionViewCell() }
-        if let recommends = viewModel?.recommends[indexPath.row] {
-            cell.titleLabel.text = recommends.title
-            cell.typeLabel.text = recommends.type
-            cell.configure(data: recommends)
+        let recommend: Recommended
+        if collectionView == self.recommendedCollectionView {
+            recommend = recommends[indexPath.row]
+        } else if collectionView == self.newCollectionView {
+            recommend = newRecommends[indexPath.row]
+        } else {
+            return UICollectionViewCell()
         }
+        cell.titleLabel.text = recommend.title
+        cell.typeLabel.text = recommend.type
+        cell.configure(data: recommend)
         return cell
     }
     
