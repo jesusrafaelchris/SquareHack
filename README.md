@@ -1,4 +1,4 @@
-# SquareHack
+# Redeem
 
 **Redeem is an innovative iOS app** that serves as a bridge between businesses using Square and their loyal customers. It offers a comprehensive platform for managing subscriptions and loyalty points, fostering user engagement and boosting customer loyalty. By leveraging the Square Subscriptions API, users can subscribe to their favorite local businesses, avail themselves of exclusive deals and earn loyalty points redeemable at selected stores.
 
