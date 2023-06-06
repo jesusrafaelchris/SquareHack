@@ -1,7 +1,9 @@
 import Foundation
 
 protocol OrdersAPICoordinatorProtocol {
-    
+    func createOrder(body: SubscriptionPlanModel, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void)
+    func calculateOrder(body: SubscriptionPlanModel, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void)
+    func retrieveOrder(orderID: String, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void)
 }
 
 class OrdersAPICoordinator: OrdersAPICoordinatorProtocol {
@@ -9,6 +11,9 @@ class OrdersAPICoordinator: OrdersAPICoordinatorProtocol {
     var apiCoordinator: APICoordinatorProtocol?
     
     struct Constants {
+        static let createOrder = "orders"
+        static let calculate = "calculate"
+        static let retrieve = "retrieve"
     }
     
     init(apiCoordinator: APICoordinatorProtocol) {
@@ -19,31 +24,35 @@ class OrdersAPICoordinator: OrdersAPICoordinatorProtocol {
     // Creates a new order that can include information about products for purchase and settings to apply to the purchase.
     // https://developer.squareup.com/reference/square/orders-api/create-order
     // POST/v2/orders
-    func createOrder() {
-        
+    func createOrder(body: SubscriptionPlanModel, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void) {
+        if let apiCoordinator = apiCoordinator {
+            apiCoordinator.fetchAPI(url: Constants.createOrder, type: .POST, body: body, logLevel: logLevel, access: .production) { response in
+                apiCoordinator.handleAPIResponse(response, completion: completion)
+            }
+        }
     }
-
-    // Batch Retrieve Orders
-    // Retrieves a set of orders by their IDs.
-    // https://developer.squareup.com/reference/square/orders-api/batch-retrieve-orders
-    // POST/v2/orders/batch-retrieve
 
     // Calculate Order
     // Enables applications to preview order pricing without creating an order.
     // https://developer.squareup.com/reference/square/orders-api/calculate-order
     // POST/v2/orders/calculate
+    func calculateOrder(body: SubscriptionPlanModel, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void) {
+        if let apiCoordinator = apiCoordinator {
+            apiCoordinator.fetchAPI(url: Constants.createOrder, type: .POST, body: body, logLevel: logLevel, access: .production) { response in
+                apiCoordinator.handleAPIResponse(response, completion: completion)
+            }
+        }
+    }
 
-    // Beta - Search Orders
-    // Search all orders for one or more locations.
-    // https://developer.squareup.com/reference/square/orders-api/search-orders
-    // POST/v2/orders/search
-
-    // Retrieve Order
-    // Retrieves an Order by ID.
+    // Retrieve Order - Retrieves an Order by ID.
     // https://developer.squareup.com/reference/square/orders-api/retrieve-order
     // GET/v2/orders/{order_id}
-    func retrieveOrder(orderID: String) {
-        
+    func retrieveOrder(orderID: String, logLevel: APILogLevel, completion: @escaping(Result<SubscriptionPlanResponse,APIError>) -> Void) {
+        if let apiCoordinator = apiCoordinator {
+            apiCoordinator.fetchAPI(url: Constants.retrieve, type: .POST, body: nil as SubscriptionPlanResponse?, logLevel: logLevel, access: .production) { response in
+                apiCoordinator.handleAPIResponse(response, completion: completion)
+            }
+        }
     }
 
     // Update Order
